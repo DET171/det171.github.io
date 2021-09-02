@@ -16,8 +16,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        node: [14]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [12, 14, 16]
 
     steps:
       - name: Checkout 🛎

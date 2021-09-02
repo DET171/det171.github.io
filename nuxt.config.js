@@ -1,4 +1,7 @@
-import shiki from 'shiki' // eslint-disable-line
+import highlightjs from 'highlight.js'
+
+const wrap = (code, lang) => `<pre><code class="hljs ${lang}">${code}</code></pre>`
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -19,6 +22,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/styles/index.css',
+    'highlight.js/styles/github.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -56,17 +61,14 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
-    /* markdown: {
-      async highlighter () {
-        const highlighter = await shiki.getHighlighter({
-          // Complete themes: https://github.com/shikijs/shiki/tree/master/packages/themes
-          theme: 'one-dark-pro'
-        })
-        return (rawCode, lang) => {
-          return highlighter.codeToHtml(rawCode, lang)
+    markdown: {
+      highlighter (rawCode, lang) {
+        if (!lang) {
+          return wrap(highlightjs.highlightAuto(rawCode).value, lang)
         }
+        return wrap(highlightjs.highlight(lang, rawCode).value, lang)
       }
-    } */
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

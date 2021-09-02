@@ -1,0 +1,20 @@
+@import "https://cdn.jsdelivr.net/npm/github-markdown-css@4.0/github-markdown.css";
+* {
+  line-height: 1.8rem;
+}
+pre[class=language-] {
+  background-color: #f5f2f0 !important;
+}
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 15px;
+  }
+}
