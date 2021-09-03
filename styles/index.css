@@ -1,4 +1,7 @@
 @import "https://cdn.jsdelivr.net/npm/github-markdown-css@4.0/github-markdown.css";
+html {
+  scroll-behavior: smooth;
+}
 * {
   line-height: 1.8rem;
 }

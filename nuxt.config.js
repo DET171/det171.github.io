@@ -23,11 +23,14 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/styles/index.css',
-    'highlight.js/styles/github.css'
+    'highlight.js/styles/base16/tomorrow.css',
+    'uikit/dist/css/uikit.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/uikit', ssr: false },
+    { src: '~/plugins/ga.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

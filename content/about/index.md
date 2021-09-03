@@ -1,5 +1,6 @@
 ---
-title: Home
+title: About
+description: A page about me
 ---
 Hi 👋, I'm DET171, otherwise known as (Admiral) Canaris. I mainly program in JavaScript and Node.js (these two are my favourite), though I also make some static web pages with HTML.<br>
 Sometimes they work, but sometimes they just fail and I have no idea why.
@@ -37,8 +38,8 @@ const aboutMe = async () => {
 I'm currently working on a couple of thing(s):
 ## Current projects:
 * Eris guide
-  - [Netlify](https://eris-guide.netlify.app)
-  - [Surge](https://eris.surge.sh)
+  - [Netlify site](https://eris-guide.netlify.app)
+  - [Surge site](https://eris.surge.sh)
 
 ## Some of my favourite things
 Like all developers, I use frameworks and libraries as well. Here's a couple that I think are quite useful:
