@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/", {data:[{articles:[{description:"A few tips on VuePress that you might wanna look at",title:"VuePress tips",path:"\u002Fvuepress-tips\u002Findex"},{description:"A page about me",title:"About",path:"\u002Fabout\u002Findex"}]}],fetch:{},mutations:void 0});
