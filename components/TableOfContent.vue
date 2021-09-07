@@ -1,6 +1,6 @@
 <template>
   <section class="tableofcontent">
-    <h3>Table of Content</h3>
+    <h3>Table of Contents</h3>
     <div id="toc">
       <ul>
         <li

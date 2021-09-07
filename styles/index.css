@@ -15,7 +15,14 @@ pre[class=language-] {
   margin: 0 auto;
   padding: 45px;
 }
-
+em {
+  color: inherit !important;
+}
+img {
+  max-height: 500px;
+  max-width: 300px;
+  display: block;
+}
 @media (max-width: 767px) {
   .markdown-body {
     padding: 15px;

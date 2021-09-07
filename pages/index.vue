@@ -72,7 +72,7 @@ export default {
       const articles = await $content({ deep: true })
         .only(['title', 'description', 'image', 'path'])
         .sortBy('createdAt', 'desc')
-        .limit(9)
+        .limit(3)
         .fetch()
       return { articles }
     } catch (err) {

@@ -1,6 +1,8 @@
 <template>
   <div class="markdown-body">
     <h1>{{ article.title }}</h1>
+    <p>Post last updated on {{ formatDate(article.updatedAt) }}</p>
+
     <TableOfContent :toc="article.toc" />
     <nuxt-content :document="article" />
   </div>
@@ -29,6 +31,12 @@ export default {
         statusCode: 404,
         message: 'Page could not be found'
       })
+    }
+  },
+  methods: {
+    formatDate (date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('en', options)
     }
   }
 }
