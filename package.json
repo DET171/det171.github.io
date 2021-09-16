@@ -1,6 +1,6 @@
 {
   "name": "home",
-  "version": "1.0.0",
+  "version": "3.1.6",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nuxt",

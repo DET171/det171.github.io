@@ -92,8 +92,8 @@ export default {
       const blogPosts = await this.$content({ deep: true })
         .only(['title', 'description', 'image', 'path'])
         .sortBy('createdAt', 'desc')
-        .skip(9 * this.page)
-        .limit(9)
+        .skip(3 * this.page)
+        .limit(3)
         .fetch()
       blogPosts.forEach((post) => {
         this.articles.push(post)

@@ -37,7 +37,7 @@ Configuration in Atom is very simple, and can be done in the `Settings` tab. You
 2. VS Code (10/10)
 3. Sublime Text (0/10)
 
-## Git
+## Source-code control
 Being a product of GitHub, Atom has a built in GitHub Desktop extension, which means you can push/pull/fetch from your text editor! All the functions are located at the bottom of the screen, and does not require you to navigate to a different menu. Atom also colours your files based on whether they were edited, or created (brown for edited files, green for new files). <br>
 VS Code also has this feature, but committing files require you to click on `Source Control` at the side of the screen, or press `Ctrl` + `Shift` + `G`. Pushing/pulling/fetching requires you to open yet another menu, while for Atom, the fetch/pull/push button is located at the bottom-left corner.
 <details>

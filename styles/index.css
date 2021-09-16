@@ -2,8 +2,11 @@
 html {
   scroll-behavior: smooth;
 }
-* {
-  line-height: 1.8rem;
+body {
+  line-height: 1.8rem !important;
+}
+code.hljs {
+  line-height: 1.83 !important;
 }
 pre[class=language-] {
   background-color: #f5f2f0 !important;
@@ -13,10 +16,14 @@ pre[class=language-] {
   min-width: 200px;
   max-width: 980px;
   margin: 0 auto;
+  line-height: 1.8rem !important;
   padding: 45px;
 }
 em {
   color: inherit !important;
+}
+details summary > * {
+  display: inline;
 }
 img {
   max-height: 500px;
