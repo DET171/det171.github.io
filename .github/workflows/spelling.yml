@@ -16,5 +16,3 @@ jobs:
     steps:
     - name: check-spelling
       uses: check-spelling/check-spelling@v0.0.19
-      with:
-        experimental_apply_changes_via_bot: 1

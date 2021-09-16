@@ -4,6 +4,8 @@ description: How to use GitHub Actions to automate the building and deployment o
 ---
 > "The most powerful tool we have as developers is automation."
 > — Scott Hanselman
+
+
 This quote is quite true. Without automation, we would spend a lot of out time on things that would have to be done repetitively, for example, manually building and deploying your GitHub pages every time there is a change. <br>
 Luckily, you can easily use GitHub Actions to build and deploy your pages by just pushing your repository to GitHub! You don't even need to do anything except to add a configuration file to your repository. <br>
 In this post, I will be creating a workflow and using [peaceiris/actions-gh-pages@v3](https://github.com/peaceiris/actions-gh-pages/tree/v3.8.0) from GitHub Marketplace (it's free).
