@@ -36,7 +36,7 @@
     "remark-cli": "^10.0.0",
     "remark-lint": "^9.0.1",
     "remark-preset-lint-recommended": "^6.0.1",
-    "shiki": "^0.9.10",
+    "shiki": "^0.9.11",
     "vue-jest": "^3.0.4"
   }
 }
