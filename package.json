@@ -34,7 +34,7 @@
     "highlight.js": "^11.2.0",
     "jest": "^27.0.5",
     "remark-cli": "^10.0.0",
-    "remark-lint": "^9.0.1",
+    "remark-lint": "^9.1.0",
     "remark-preset-lint-recommended": "^6.0.1",
     "shiki": "^0.9.10",
     "vue-jest": "^3.0.4"
