@@ -19,7 +19,7 @@
     "core-js": "^3.15.1",
     "cross-env": "^7.0.3",
     "nuxt": "^2.15.7",
-    "uikit": "^3.7.2"
+    "uikit": "^3.7.4"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
