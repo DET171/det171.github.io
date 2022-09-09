@@ -46,7 +46,7 @@ export default function Home({ posts }) {
 					>
 						<h4 className='text-3xl font-bold italic mb-4 text-center'>Other things I do</h4>
 						<p className='my-5 text-left'>
-							As with most people, I like playing games during my (occasional) free time. I mostly sell my soul to Gaijin and grind War Thunder. A few other ones I occasionally touch are Phantom Forces and Mincraft. <br />
+							As with most people, I like playing games during my (occasional) free time. I mostly sell my soul to Gaijin and grind War Thunder. A few other ones I occasionally touch are Phantom Forces and Minecraft. <br />
 							And yes, I main Germany and USA.
 						</p>
 					</div>
