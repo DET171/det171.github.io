@@ -1,3 +1,7 @@
 {
-  "extends": ["next/core-web-vitals", "berry"]
+  "extends": ["next/core-web-vitals", "berry", "plugin:mdx/recommended"],
+	"rules": {
+		"no-console": "off",
+		"jsx-quotes": ["error", "prefer-single"]
+	}
 }

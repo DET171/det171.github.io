@@ -1,9 +1,11 @@
 import Head from 'next/head';
+import { getPosts } from '../scripts/getPosts';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import dayjs from 'dayjs';
 
-export default function Home() {
+export default function Home({ posts }) {
 	useEffect(() => {
 		AOS.init({
 			duration: 1000,
@@ -48,9 +50,42 @@ export default function Home() {
 							And yes, I main Germany and USA.
 						</p>
 					</div>
+
+					{/* list of posts */}
+					<div
+						data-aos='fade-right'
+						className='p-10 rounded-lg items-center max-w-4xl mt-10 sm:w-full bg-slate-300 shadow-2xl'
+					>
+						<h4 className='text-3xl font-bold italic mb-4 text-center'>Posts</h4>
+						{posts
+							.sort((a, b) => {
+								return (dayjs(a).isAfter(dayjs(b)) ? 1 : -1);
+							})
+							.map((post) => (
+								<div key={post.slug} className='my-5 text-left text-center'>
+									<a
+										href={`/posts/${post.slug}`}
+										className='text-2xl font-bold italic hover:underline'
+									>
+										{post.data.title}
+									</a>
+									<p className='text-sm'>{post.data.date}</p>
+								</div>
+							))}
+					</div>
 				</main>
 			</div>
 
 		</div>
 	);
 }
+
+export const getStaticProps = () => {
+	const posts = getPosts();
+
+	return {
+		props: {
+			posts,
+		},
+	};
+};
