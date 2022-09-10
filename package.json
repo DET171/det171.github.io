@@ -11,6 +11,7 @@
     "lint": "eslint . --ext mdx,js,jsx,ts,tsx"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.0",
     "@giscus/react": "^2.2.0",
     "@headlessui/react": "^1.7.0",
     "@heroicons/react": "^2.0.10",

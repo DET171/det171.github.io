@@ -36,7 +36,7 @@ export default function Home({ posts }) {
 					>
 						<h4 className='text-3xl font-bold italic mb-4 text-center'>About Me</h4>
 						<p className='my-5 text-left'>
-							I am a student in High School from Singapore. I like programming in my free time (which unfortunately I don&apos;t have much of). I mostly use JavaScript/TypeScript for backend and frontend development. I&apos;m currently learning Rust and also interested in game development although I haven&apos;t had time to learn it yet.
+							I am a High School Student. I like programming in my free time (which unfortunately I don&apos;t have much of). I mostly use JavaScript/TypeScript for backend and frontend development. I&apos;m currently learning Rust and also interested in game development although I haven&apos;t had time to learn it yet.
 						</p>
 					</div>
 
@@ -62,7 +62,7 @@ export default function Home({ posts }) {
 								return (dayjs(a).isAfter(dayjs(b)) ? 1 : -1);
 							})
 							.map((post) => (
-								<div key={post.slug} className='my-5 text-left text-center'>
+								<div key={post.slug} className='my-5 text-center'>
 									<a
 										href={`/posts/${post.slug}`}
 										className='text-2xl font-bold italic hover:underline'
@@ -70,12 +70,23 @@ export default function Home({ posts }) {
 										{post.data.title}
 									</a>
 									<p className='text-sm'>{post.data.date}</p>
+									<p className='text-base'>{post.data.description}</p>
 								</div>
 							))}
 					</div>
 				</main>
 			</div>
-
+			<footer
+				className='flex flex-col items-center justify-center w-full flex-1 text-center py-20'
+				data-aos='fade-down'
+			>
+				<hr
+					className='border-slate-300 border-2 w-3/5 mb-5'
+				/>
+				<p className='text-sm'>
+					<i className='fa-brands fa-github text-xl'></i>
+				</p>
+			</footer>
 		</div>
 	);
 }
