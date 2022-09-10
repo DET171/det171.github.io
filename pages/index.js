@@ -83,9 +83,10 @@ export default function Home({ posts }) {
 				<hr
 					className='border-slate-300 border-2 w-3/5 mb-5'
 				/>
-				<p className='text-sm'>
-					<a href='https://github.com/DET171' target={'_blank'} rel='noreferrer'><i className='fa-brands fa-github text-xl'></i></a>
-				</p>
+				<div className='grid grid-cols-2 w-3/5'>
+					<a href='https://github.com/DET171' target={'_blank'} rel='noreferrer'><i className='fa-brands fa-github'></i></a>
+					<span><i className='fa-brands fa-discord'></i>&nbsp;&nbsp; 𝓐𝓭𝓶𝓲𝓻𝓪𝓵 𝓒𝓪𝓷𝓪𝓻𝓲𝓼#0340</span>
+				</div>
 			</footer>
 		</div>
 	);
