@@ -24,12 +24,6 @@ const withMDX = MDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
-	webpack: (config, options) => {
-		config.experiments = {
-			'topLevelAwait': true,
-		};
-		return config;
-	},
 	reactStrictMode: true,
 	images: {
 		unoptimized: true,

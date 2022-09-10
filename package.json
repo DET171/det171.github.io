@@ -11,6 +11,7 @@
     "lint": "eslint . --ext mdx,js,jsx,ts,tsx"
   },
   "dependencies": {
+    "@giscus/react": "^2.2.0",
     "@headlessui/react": "^1.7.0",
     "@heroicons/react": "^2.0.10",
     "@mdx-js/loader": "^2.1.3",
