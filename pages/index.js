@@ -77,14 +77,14 @@ export default function Home({ posts }) {
 				</main>
 			</div>
 			<footer
-				className='flex flex-col items-center justify-center w-full flex-1 text-center py-20'
+				className='flex flex-col items-center justify-center w-full flex-1 text-center py-10'
 				data-aos='fade-down'
 			>
 				<hr
 					className='border-slate-300 border-2 w-3/5 mb-5'
 				/>
 				<p className='text-sm'>
-					<i className='fa-brands fa-github text-xl'></i>
+					<a href='https://github.com/DET171' target={'_blank'} rel='noreferrer'><i className='fa-brands fa-github text-xl'></i></a>
 				</p>
 			</footer>
 		</div>
