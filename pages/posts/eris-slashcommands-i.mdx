@@ -1,0 +1,266 @@
+---
+title: Writing a Discord Bot with Eris
+description: Guide to writing a Discord bot with slash commands
+date: 11 September 2022
+---
+import Giscus from '@giscus/react'
+
+<title>Writing a Discord Bot</title>
+<article className="prose prose-lg max-w-none py-20 px-20 prose-stone font-sans leading-6">
+	# Writing a Discord bot with slash commands using Eris
+
+	## Introduction
+	Yep, the title says it all. I decided to do this as there hasn't been any written guide I'm aware of that shows how to write a Discord bot with slash commands using Eris.
+
+	Anyways, let's get started! You first need the following few things:
+	- Your Discord bot's token (refer to [this](https://www.writebots.com/discord-bot-token/) if you don't know how)
+	- Node.js installed on your computer (preferrably v16 or higher)
+	- A good code editor/IDE (optional, but recommended)
+
+	Now install the required dependencies:
+	```bash
+	yarn add eris dotenv eslint consola
+	# or using NPM
+	npm i eris dotenv eslint consola
+	```
+
+	I'm also going to use [ESLint](//eslint.org) to enforce code style and consola for nicer console messages.
+
+	And finally, add these scripts to your `package.json`:
+	```json
+	"scripts": {
+		"start": "node index.js",
+		"lint": "eslint ."
+	}
+	```
+
+	You also need to set `type` to `module` in your `package.json` file.
+	## Writing the code
+	Now create a file called `index.js` and add the following code:
+	```js
+	import Eris, { Constants, Collection, CommandInteraction } from 'eris';
+	import fs from 'fs';
+	import console from 'consola';
+	import * as dotenv from 'dotenv';
+	dotenv.config();
+	```
+
+	We're importing `Eris`, the `Constants` and `Collection` from Eris, the native `fs` module, `consola` and `dotenv`.
+
+	Before I forget, you need to create a `.env` file and add your bot's token to it:
+	```
+	TOKEN=your-bot-token
+	```
+
+	Now let's creat the client: 
+	```js
+	const client = new Eris(`${process.env.TOKEN}`, {
+		intents: [
+			Constants.Intents.guilds,
+			Constants.Intents.guildMessages,
+			Constants.Intents.guildMessageReactions,
+			Constants.Intents.directMessages,
+			Constants.Intents.directMessageReactions,
+		],
+	});
+	```
+
+	### Registering commands
+	Now let's register the commands. First, create a folder called `commands` and add a file called `ping.js` under it. Then add the following code:
+	```js
+	export default {
+		name: 'ping',
+		description: 'Ping!',
+		execute: (i) => {
+			i.createMessage('Pong.');
+		},
+	};
+	```
+	We basically export an object with the command information and the function to execute when the command is used for later use.
+
+	In `index.js`, add a `ready` event listener:
+	```js
+	client.on('ready', async () => {
+		console.info(`Logged in as ${client.user.username}#${client.user.discriminator}`);
+		console.info('Loading commands...');
+	});
+	```
+
+	Inside the `ready` event listener, we're going to load commands:
+	```js
+	client.on('ready', async () => {
+		// ...
+
+		// first create a collection to store commands
+		client.commands = new Collection();
+		// load all the js files under ./commands
+		const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
+	});
+	```
+
+	We now have an array of file names, so we can loop through them and register them:
+	```js
+	client.on('ready', async () => {
+		// ...
+
+		for (const file of commandFiles) {
+			const command = (await import(`./commands/${file}`)).default;
+			client.commands.set(command.name, command);
+
+			client.createCommand({
+				name: command.name,
+				description: command.description,
+				options: command.options ?? [],
+				type: Constants.ApplicationCommandTypes.CHAT_INPUT,
+			});
+		}
+	
+		console.info('Commands loaded!');
+	});
+	```
+
+	Note that I used the dynamic `import`, as `import ... from 'xxx'` can only be used at the top level, and `require()` isn't available in ESM. The dynamic `import` retunrs an object with a `default` property, which is the exported object from the file, which is the reason for the `.default` at the end.
+
+	`client.createCommand` basically registers the command, and accepts an object with the command information. You can read more about it [here](https://abal.moe/Eris/docs/0.17.1/Client#method-createCommand).
+
+	### Handling commands
+	Now, for the command handler! First, create an `interactionCreate` event listener:
+	```js
+	client.on('interactionCreate', async (i) => {
+
+	});
+	```
+
+	We also need to check if the interaction is a command interaction, and whether it exists or not:
+	```js
+	client.on('interactionCreate', async (i) => {
+		if (i instanceof CommandInteraction) {
+			if (!client.commands.has(i.data.name)) return i.createMessage('This command does not exist.');
+		}
+	});
+	```
+
+	`i instanceof CommandInteraction` basically checks to see if `i` is a `CommandInteraction` object. If it is, we check if the command exists, and if it doesn't, we send a message saying that the command is not yet implemented. This is unlikely to happen as you aren't likely to register commands that don't exist yet, but in case you do (for certain reasons like testing or as a placeholder), this is a good way to handle it.
+
+
+	Remember the collection we created earlier on? We're gonna use it now:
+
+	```js
+	client.on('interactionCreate', async (i) => {
+		if (i instanceof CommandInteraction) {
+			if (!client.commands.has(i.data.name)) return i.createMessage('This command does not exist.');
+
+			try {
+				await client.commands.get(i.data.name).execute(i);
+			}
+			catch (error) {
+				console.error(error);
+				await i.createMessage('There was an error while executing this command!');
+			}
+		}
+	});
+	```
+	
+	We get the command from the collection and execute it, and if there's an error, we log it and send a message to the user.
+
+	Finally, don't forget to connect the client!
+	```js
+	// ...
+	client.connect();
+	```
+
+	You can now run `npm run dev` and test your bot!
+
+	## Conclusion
+	That's it! You now have a bot that can handle slash commands. You can add more commands by adding more files under the `commands` folder. You can also read more about [slash commands](https://discord.com/developers/docs/interactions/slash-commands) and [Eris](https://abal.moe/Eris/docs/0.17.1/).
+
+
+	## Final Code
+	`index.js`:
+	```js
+	import Eris, { Constants, Collection, CommandInteraction } from 'eris';
+	import fs from 'fs';
+	import console from 'consola';
+	import * as dotenv from 'dotenv';
+	dotenv.config();
+
+	const client = new Eris(`${process.env.TOKEN}`, {
+		intents: [
+			Constants.Intents.guilds,
+			Constants.Intents.guildMessages,
+			Constants.Intents.guildMessageReactions,
+			Constants.Intents.directMessages,
+			Constants.Intents.directMessageReactions,
+		],
+	});
+
+
+	client.on('ready', async () => {
+		console.info(`Logged in as ${client.user.username}#${client.user.discriminator}`);
+		console.info('Loading commands...');
+		client.commands = new Collection();
+
+		const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
+		for (const file of commandFiles) {
+			const command = (await import(`./commands/${file}`)).default;
+			client.commands.set(command.name, command);
+
+			client.createCommand({
+				name: command.name,
+				description: command.description,
+				options: command.options ?? [],
+				type: Constants.ApplicationCommandTypes.CHAT_INPUT,
+			});
+		}
+		console.info('Commands loaded!');
+	});
+
+	client.on('error', (err) => {
+		console.error(err); // or your preferred logger
+	});
+
+	client.on('interactionCreate', async (i) => {
+		if (i instanceof CommandInteraction) {
+			if (!client.commands.has(i.data.name)) return i.createMessage('This command does not exist.');
+
+			try {
+				await client.commands.get(i.data.name).execute(i);
+			}
+			catch (error) {
+				console.error(error);
+				await i.createMessage('There was an error while executing this command!');
+			}
+		}
+	});
+
+	client.connect();
+	```
+
+	`commands/ping.js`:
+	```js
+	export default {
+		name: 'ping',
+		description: 'Pong!',
+		execute: (i) => {
+			await i.createMessage('Pong!');
+		},
+	};
+	```
+
+	If you have any errors, you may ask me via Discord (𝓐𝓭𝓶𝓲𝓻𝓪𝓵 𝓒𝓪𝓷𝓪𝓻𝓲𝓼#0340).
+
+	<Giscus
+		repo="DET171/giscus"
+		repoId="R_kgDOH930rg"
+		category="Announcements"
+		categoryId="DIC_kwDOH930rs4CRVxe"
+		mapping="pathname"
+		strict="0"
+		reactionsEnabled="1"
+		emitMetadata="0"
+		inputPosition="top"
+		theme="light"
+		lang="en"
+		loading="lazy"
+	></Giscus>
+</article>

@@ -15,10 +15,10 @@ export const getPosts = () => {
 				path.join(process.cwd(), 'pages', 'posts', file.name),
 				'utf-8',
 			);
-			const { data, content } = matter(fileContent);
+			const { data } = matter(fileContent);
 
 			const slug = file.name.replace(/.mdx$/, '');
-			return { data, content, slug };
+			return { data, slug };
 		})
 		.filter((post) => post);
 

@@ -59,7 +59,7 @@ export default function Home({ posts }) {
 						<h4 className='text-3xl font-bold italic mb-4 text-center'>Posts</h4>
 						{posts
 							.sort((a, b) => {
-								return (dayjs(a).isAfter(dayjs(b)) ? 1 : -1);
+								return new Date(b.data.date) - new Date(a.data.date);
 							})
 							.map((post) => (
 								<div key={post.slug} className='my-5 text-center'>
