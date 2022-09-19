@@ -4,6 +4,7 @@ export default function Document() {
 	return (
 		<Html className='dark'>
 			<Head>
+				<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css' integrity='sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn' crossOrigin='anonymous'></link>
 				<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css' />
 			</Head>
 			<body>

@@ -1,10 +1,16 @@
 import highlighter from 'rehype-highlight';
 import MDX from '@next/mdx';
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
+import remarkGFM from 'remark-gfm';
+import TOC from 'remark-toc';
 
 const withMDX = MDX({
 	extension: /\.mdx?$/,
 	options: {
 		remarkPlugins: [
+			remarkMath,
+			remarkGFM,
 			() => (tree, file) => {
 				if (tree.children[0].type === 'thematicBreak') {
 					const firstHeadingIndex = tree.children.findIndex(t => t.type === 'heading');
@@ -17,6 +23,7 @@ const withMDX = MDX({
 		],
 		rehypePlugins: [
 			highlighter,
+			rehypeKatex,
 		],
 	},
 });

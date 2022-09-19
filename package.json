@@ -23,7 +23,12 @@
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rehype-highlight": "^5.0.2"
+    "rehype-highlight": "^5.0.2",
+    "rehype-katex": "^6.0.2",
+    "remark-gfm": "^3.0.1",
+    "remark-math": "^5.1.1",
+    "remark-mdx-toc": "^0.3.1",
+    "remark-toc": "^8.0.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.7",
