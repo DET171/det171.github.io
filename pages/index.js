@@ -13,11 +13,12 @@ export default function Home({ posts }) {
 	}, []);
 
 	return (
-		<div className='bg-slate-100'>
+		<div className='bg-slate-200'>
 			<Head>
 				<title>Home</title>
 			</Head>
-			<div className='flex flex-col items-center justify-center min-h-screen pt-8 pb-3'>
+
+			<div className='flex flex-col items-center justify-center min-h-screen pt-8 pb-10'>
 				<main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
 					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img
@@ -25,9 +26,9 @@ export default function Home({ posts }) {
 						className='inline object-cover w-60 h-60 mr-2 rounded-full'
 						src='https://avatars.githubusercontent.com/u/68373699?v=4'
 					/>
-					<h1 className='text-6xl font-bold italic py-10'>Canaris</h1>
-					<p className='mt-3'>
-						I see you have found my personal space on the web.
+					<h1 className='text-6xl font-display italic py-10'>Hi, I am Canaris</h1>
+					<p className='text-2xl font-display'>
+						I am a <span class='description'></span>
 					</p>
 
 					<div
@@ -36,7 +37,7 @@ export default function Home({ posts }) {
 					>
 						<h4 className='text-3xl font-bold italic mb-4 text-center'>About Me</h4>
 						<p className='my-5 text-left'>
-							I am a High School Student. I like programming in my free time (which unfortunately I don&apos;t have much of). I mostly use JavaScript/TypeScript for backend and frontend development. I&apos;m currently learning Rust and also interested in game development although I haven&apos;t had time to learn it yet.
+							I like programing during my free time and I am a self-taught developer. I am currently learning Rust, Dart/Flutter, Kotlin and C++, and trying to improve on web designing.
 						</p>
 					</div>
 
@@ -46,9 +47,26 @@ export default function Home({ posts }) {
 					>
 						<h4 className='text-3xl font-bold italic mb-4 text-center'>Other things I do</h4>
 						<p className='my-5 text-left'>
-							As with most people, I like playing games during my (occasional) free time. I mostly sell my soul to Gaijin and grind War Thunder. A few other ones I occasionally touch are Phantom Forces and Minecraft. <br />
+							As with most people, I like playing games during my (occasional) free time. I mostly play War Thunder, but a few other ones I occasionally touch are Phantom Forces, MLBB and Minecraft. <br />
+							I also like reading books, and my favourite author Rick Riordan. My favourite series are Percy Jackson and the Olympians, but I also like the Heroes of Olympus and the Trials of Apollo series. <br />
 							And yes, I main Germany and USA.
 						</p>
+					</div>
+
+					<div
+						data-aos='fade-right'
+						className='p-10 rounded-lg items-center max-w-4xl mt-10 sm:w-full bg-slate-300 shadow-2xl'
+					>
+						<h4 className='text-3xl font-bold italic mb-4 text-center'>Projects</h4>
+						<div className='my-5 text-center'>
+							<a
+								href='https://github.com/DET171/det171.github.io'
+								className='text-2xl font-bold italic hover:underline'
+							>
+								My Personal Website
+							</a>
+							<p className='text-base'>The current site you&apos;re looking at</p>
+						</div>
 					</div>
 
 					{/* list of posts */}
@@ -76,18 +94,6 @@ export default function Home({ posts }) {
 					</div>
 				</main>
 			</div>
-			<footer
-				className='flex flex-col items-center justify-center w-full flex-1 text-center py-10'
-				data-aos='fade-down'
-			>
-				<hr
-					className='border-slate-300 border-2 w-3/5 mb-5'
-				/>
-				<div className='grid grid-cols-2 w-3/5'>
-					<a href='https://github.com/DET171' target={'_blank'} rel='noreferrer'><i className='fa-brands fa-github'></i></a>
-					<span><i className='fa-brands fa-discord'></i>&nbsp;&nbsp; 𝓐𝓭𝓶𝓲𝓻𝓪𝓵 𝓒𝓪𝓷𝓪𝓻𝓲𝓼#0340</span>
-				</div>
-			</footer>
 		</div>
 	);
 }

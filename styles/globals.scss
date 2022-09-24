@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'typed';
+
+.description {
+	@include typed((
+		"Frontend & Backend Developer": (
+			color: orange,
+		),
+		"High School Student": (
+			color: blue,
+		),
+		"Percy Jackson Fan": (
+			color: #00c5c5,
+		),
+		"War Thunder Player": (
+			color: red,
+		),
+		"JavaScript Enthusiast": (
+			color: #22cc00,
+		),
+		"Web Designer": (
+			color: #ff00ff,
+		),
+	), 2, (caret-width: 2px));
+}
+
+.prose :where(code):not(:where([class~="not-prose"] *))::before {
+	content: "";
+}
+
+.prose :where(code):not(:where(pre *)) {
+	background-color: #cac7c7;
+	border-radius: 0.25rem;
+	padding: 0.25rem;
+}
+
+.prose :where(code):not(:where([class~="not-prose"] *))::after {
+	content: "";
+}

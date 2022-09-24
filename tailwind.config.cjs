@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: [
@@ -7,6 +9,9 @@ module.exports = {
 	darkMode: 'class',
 	theme: {
 		extend: {},
+		fontFamily: {
+			'display': ['"Fredoka One"', 'sans-serif'],
+		},
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
