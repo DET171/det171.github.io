@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import NavBar from '../components/Nav';
 import AOS from 'aos';
-import { StlViewer } from 'react-stl-viewer';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import dayjs from 'dayjs';
