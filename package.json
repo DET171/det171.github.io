@@ -21,7 +21,6 @@
     "dayjs": "^1.11.5",
     "gray-matter": "^4.0.3",
     "next": "12.3.0",
-    "nextjs-google-analytics": "^2.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "reading-time": "^1.5.0",

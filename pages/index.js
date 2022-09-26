@@ -28,7 +28,7 @@ export default function Home({ posts }) {
 					/>
 					<h1 className='text-6xl font-display italic py-10'>Hi, I am Canaris,</h1>
 					<p className='text-2xl font-display'>
-						a <span class='description'></span>
+						a <span className='description'></span>
 					</p>
 
 					<div
