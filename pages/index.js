@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import { getPosts } from '../scripts/getPosts';
+import NavBar from '../components/Nav';
 import AOS from 'aos';
+import { StlViewer } from 'react-stl-viewer';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import dayjs from 'dayjs';
@@ -17,7 +18,7 @@ export default function Home({ posts }) {
 			<Head>
 				<title>Home</title>
 			</Head>
-
+			<NavBar />
 			<div className='flex flex-col items-center justify-center min-h-screen pt-8 pb-10'>
 				<main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
 					{/* eslint-disable-next-line @next/next/no-img-element */}
@@ -53,57 +54,8 @@ export default function Home({ posts }) {
 						</p>
 					</div>
 
-					<div
-						data-aos='fade-right'
-						className='p-10 rounded-lg items-center max-w-4xl mt-10 sm:w-full bg-slate-300 shadow-2xl'
-					>
-						<h4 className='text-3xl font-bold italic mb-4 text-center'>Projects</h4>
-						<div className='my-5 text-center'>
-							<a
-								href='https://github.com/DET171/det171.github.io'
-								className='text-2xl font-bold italic hover:underline'
-							>
-								My Personal Website
-							</a>
-							<p className='text-base'>The current site you&apos;re looking at</p>
-						</div>
-					</div>
-
-					{/* list of posts */}
-					<div
-						data-aos='fade-right'
-						className='p-10 rounded-lg items-center max-w-4xl mt-10 sm:w-full bg-slate-300 shadow-2xl'
-					>
-						<h4 className='text-3xl font-bold italic mb-4 text-center'>Posts</h4>
-						{posts
-							.sort((a, b) => {
-								return new Date(b.data.date) - new Date(a.data.date);
-							})
-							.map((post) => (
-								<div key={post.slug} className='my-5 text-center'>
-									<a
-										href={`/posts/${post.slug}`}
-										className='text-2xl font-bold italic hover:underline'
-									>
-										{post.data.title}
-									</a>
-									<p className='text-sm'>{post.data.date}</p>
-									<p className='text-base'>{post.data.description}</p>
-								</div>
-							))}
-					</div>
 				</main>
 			</div>
 		</div>
 	);
 }
-
-export const getStaticProps = () => {
-	const posts = getPosts();
-
-	return {
-		props: {
-			posts,
-		},
-	};
-};

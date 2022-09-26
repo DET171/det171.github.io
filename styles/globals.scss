@@ -39,3 +39,11 @@
 .prose :where(code):not(:where([class~="not-prose"] *))::after {
 	content: "";
 }
+
+html, body {
+	height: 100%;
+}
+
+#__next {
+	height: 100%;
+}
