@@ -30,6 +30,20 @@ export default function App() {
 					</div>
 
 					<div>
+						<a href='https://github.com/DET171/torrent-client' target='_blank' rel='noreferrer'>
+							<div className='bg-zinc-300 duration-300 rounded-lg shadow-lg p-4 cursor-pointer hover:shadow-2xl'>
+								<img className='rounded-lg' src='/torrent.png' />
+								<h2 className='text-2xl font-bold text-slate-800 mt-3'>
+									Torrent Client
+								</h2>
+								<p className='text-slate-800'>
+									A torrent client written with WebTorrent and Electron. Doesn&apos;t really look that good, but again, I kinda suck at design.
+								</p>
+							</div>
+						</a>
+					</div>
+
+					<div>
 						<a href='https://github.com/EC3-Gang/open-house-wordle' target='_blank' rel='noreferrer'>
 							<div className='bg-zinc-300 duration-300 rounded-lg shadow-lg p-4 cursor-pointer hover:shadow-2xl'>
 								<img className='rounded-lg' src='/worldle.png' />
@@ -42,6 +56,7 @@ export default function App() {
 							</div>
 						</a>
 					</div>
+
 				</div>
 			</div>
 		</div>

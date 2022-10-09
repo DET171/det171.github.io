@@ -3,7 +3,6 @@ import NavBar from '../components/Nav';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
-import dayjs from 'dayjs';
 
 export default function Home({ posts }) {
 	useEffect(() => {
