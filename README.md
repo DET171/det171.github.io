@@ -1,1 +1,1 @@
-My personal website
+You know the feeling when you spent the whole day trying to port this over to Next 13 but `next export` still doesn't work 🗿
