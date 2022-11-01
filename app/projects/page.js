@@ -1,15 +1,7 @@
-import NavBar from '../../components/Nav';
-import Head from 'next/head';
-import Link from 'next/link';
-
 export default function App() {
 	return (
 		<div className='bg-slate-200 min-h-full'>
-			<Head>
-				<title>Projects</title>
-			</Head>
-			<NavBar />
-			<div className='p-10'>
+=			<div className='p-10 pt-0'>
 				<h1
 					className='text-4xl text-center font-bold text-slate-800'
 				>My Projects</h1>

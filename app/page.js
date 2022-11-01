@@ -1,10 +1,16 @@
-import Head from 'next/head';
-import NavBar from '../components/Nav';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+'use client';
 
-export default function Home() {
+import AOS from 'aos';
+import { useEffect } from 'react';
+import { Fredoka_One } from '@next/font/google';
+
+
+const FO = Fredoka_One({
+	weight: '400',
+	subsets: ['latin'],
+});
+
+export default function Page() {
 	useEffect(() => {
 		AOS.init({
 			duration: 1000,
@@ -13,10 +19,6 @@ export default function Home() {
 
 	return (
 		<div className='bg-slate-200'>
-			<Head>
-				<title>Home</title>
-			</Head>
-			<NavBar />
 			<div className='flex flex-col items-center justify-center min-h-screen pt-8 pb-10'>
 				<main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
 					{/* eslint-disable-next-line @next/next/no-img-element */}
@@ -25,8 +27,8 @@ export default function Home() {
 						className='inline object-cover w-60 h-60 mr-2 rounded-full'
 						src='https://avatars.githubusercontent.com/u/68373699?v=4'
 					/>
-					<h1 className='text-6xl font-display italic py-10'>Hi, I am Canaris,</h1>
-					<p className='text-2xl font-display'>
+					<h1 className={`text-6xl ${FO.className} italic py-10`}>Hi, I am Canaris,</h1>
+					<p className={`text-2xl ${FO.className}`}>
 						a <span className='description'></span>
 					</p>
 

@@ -3,6 +3,10 @@
 @tailwind utilities;
 @import 'typed';
 
+html, body {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
 .description {
 	@include typed((
 		"Frontend & Backend Developer": (
