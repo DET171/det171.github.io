@@ -7,10 +7,6 @@ html, body {
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
-code {
-	background-color: var(--tw-prose-pre-bg);
-}
-
 .description {
 	@include typed((
 		"Frontend & Backend Developer": (
