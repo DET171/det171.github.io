@@ -1,5 +1,6 @@
 import { Source_Sans_Pro, Fredoka_One } from '@next/font/google';
 import NavBar from '../components/Nav.js';
+import Script from 'next/script';
 import 'aos/dist/aos.css';
 import 'highlight.js/styles/atom-one-dark.css';
 import '../styles/globals.scss';
@@ -14,6 +15,17 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang='en' className={`${SSP.className}`}>
 			<head>
+				<Script async src='https://www.googletagmanager.com/gtag/js?id=G-4GPB1Z1HL6'></Script>
+				<Script id='google-analytics' strategy='afterInteractive'>
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', 'G-4GPB1Z1HL6', {
+							page_path: window.location.pathname,
+						});
+					`}
+				</Script>
 				<meta charSet='utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<meta name='description' content='Canaris' />
