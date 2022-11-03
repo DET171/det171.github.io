@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
 						});
 					`}
 				</Script>
+				<meta name='google-site-verification' content='RyK2veBYbey_5eYN8N1bZKZUeRgbGitCJrdKOrXTWl8' />
 				<meta charSet='utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<meta name='description' content='Canaris' />
