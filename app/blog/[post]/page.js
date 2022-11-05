@@ -1,13 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import { serialize } from 'next-mdx-remote/serialize';
-import * as shiki from 'shiki';
 import MDXRemote from './MDXRemoteWrapper.js';
-import rehypeHighlight from 'rehype-highlight';
+import prism from '@mapbox/rehype-prism';
 import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import Giscus from './GiscusWrapper.js';
+import TOC from 'remark-toc';
+import 'prism-themes/themes/prism-one-dark.css';
 
 
 export default async function Page({ params }) {
@@ -20,10 +21,11 @@ export default async function Page({ params }) {
 		parseFrontmatter: true,
 		mdxOptions: {
 			rehypePlugins: [
-				rehypeHighlight,
+				prism,
 				rehypeKatex,
 			],
 			remarkPlugins: [
+				TOC,
 				remarkGfm,
 				remarkMath,
 			],

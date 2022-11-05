@@ -2,7 +2,6 @@ import { Source_Sans_Pro, Fredoka_One } from '@next/font/google';
 import NavBar from '../components/Nav.js';
 import Script from 'next/script';
 import 'aos/dist/aos.css';
-import 'highlight.js/styles/atom-one-dark.css';
 import '../styles/globals.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 

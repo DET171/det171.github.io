@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap');
 @tailwind utilities;
 @import 'typed';
 
@@ -7,8 +8,13 @@ html, body {
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
-code.hljs {
-	background-color: transparent !important;
+@font-face {
+	font-family: 'Cascadia Code';
+	src: url(./CascadiaCode.woff2) format('woff2');
+}
+
+code[class*="language-"], pre[class*="language-"] {
+	font-family: 'Cascadia Code', monospace !important;
 }
 
 .description {
