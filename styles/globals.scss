@@ -6,6 +6,8 @@
 
 html, body {
 	font-family: 'Source Sans Pro', sans-serif;
+	scroll-behavior: smooth;
+	scroll-padding-top: 80px;
 }
 
 @font-face {

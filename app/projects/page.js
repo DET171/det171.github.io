@@ -5,7 +5,7 @@ export default function App() {
 				<h1
 					className='text-4xl text-center font-bold text-slate-800'
 				>My Projects</h1>
-				<div className='p-10 grid grid-cols-3 gap-4'>
+				<div className='p-10 grid grid-cols-1 gap-4 sm:grid-cols-3'>
 					{/* card */}
 					<div>
 						<a href='https://canaris.is-a.dev' target='_blank' rel='noreferrer'>

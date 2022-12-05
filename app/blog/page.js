@@ -6,9 +6,9 @@ import fs from 'fs';
 import '../../styles/globals.scss';
 
 export default function App() {
-	const files = fs.readdirSync(path.join(process.cwd(), 'posts'));
+	const files = fs.readdirSync(path.join(process.cwd(), 'app/blog/[post]/posts'));
 	const posts = files.map((post) => {
-		const content = fs.readFileSync(path.join(process.cwd(), 'posts', post), 'utf-8');
+		const content = fs.readFileSync(path.join(process.cwd(), 'app/blog/[post]/posts', post), 'utf-8');
 		const { data } = matter(content);
 		data.slug = post.replace('.mdx', '');
 		data.readingTime = readingTime(content);
@@ -16,7 +16,7 @@ export default function App() {
 	});
 
 	return (
-		<div className='bg-slate-200 min-h-screen'>
+		<div>
 			<div className='p-10 pt-0'>
 				<h1
 					className='text-4xl text-center font-bold text-slate-800'
