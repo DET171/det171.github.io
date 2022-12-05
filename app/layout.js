@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
 			</head>
 			<body className='bg-slate-200'>
 				<NavBar />
-				<div className='pt-28'>
+				<div className='sm:px-20 px-5 pt-28 pb-5'>
 					{children}
 				</div>
 			</body>

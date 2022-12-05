@@ -1,16 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 export default function App() {
 	return (
 		<div className='bg-slate-200 min-h-full'>
-			<div className='p-10 pt-0'>
+			<div className='pt-0'>
 				<h1
 					className='text-4xl text-center font-bold text-slate-800'
 				>My Projects</h1>
-				<div className='p-10 grid grid-cols-1 gap-4 sm:grid-cols-3'>
+				<div className='pt-10 grid grid-cols-1 gap-4 sm:grid-cols-3'>
 					{/* card */}
 					<div>
 						<a href='https://canaris.is-a.dev' target='_blank' rel='noreferrer'>
 							<div className='bg-zinc-300 duration-300 rounded-lg shadow-lg p-4 cursor-pointer hover:shadow-2xl'>
-								<img className='rounded-lg' src='/blog.png' />
+								<img alt='' className='rounded-lg' src='/blog.png' />
 								<h2 className='text-2xl font-bold text-slate-800 mt-3'>
 								My Personal Site
 								</h2>

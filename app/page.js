@@ -20,7 +20,7 @@ export default function Page() {
 	return (
 		<div className='bg-slate-200'>
 			<div className='flex flex-col items-center justify-center min-h-screen pt-8 pb-10'>
-				<main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
+				<main className='flex flex-col items-center justify-center w-full flex-1 text-center'>
 					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img
 						alt='logo'

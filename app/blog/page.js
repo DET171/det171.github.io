@@ -17,7 +17,7 @@ export default function App() {
 
 	return (
 		<div>
-			<div className='p-10 pt-0'>
+			<div className='pt-0'>
 				<h1
 					className='text-4xl text-center font-bold text-slate-800'
 				>My Posts</h1>
@@ -28,7 +28,7 @@ export default function App() {
 						})
 						.map((post) => {
 							return (
-								<Link key={post.slug} className='w-3/5' href={
+								<Link key={post.slug} className='w-full sm:w-3/5' href={
 									`/blog/${post.slug}`
 								}>
 									<div
