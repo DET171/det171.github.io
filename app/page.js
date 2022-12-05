@@ -21,7 +21,7 @@ export default function Page() {
 		<div className='bg-slate-200'>
 			<div className='flex flex-col items-center justify-center min-h-screen pt-8 pb-10'>
 				<main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
-					{/* eslint-disable-next-line @next/next/no-img-element */}o
+					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img
 						alt='logo'
 						className='inline object-cover w-60 h-60 mr-2 rounded-full'
