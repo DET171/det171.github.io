@@ -2,13 +2,12 @@
 
 import AOS from 'aos';
 import { useEffect } from 'react';
-import { Fredoka_One } from '@next/font/google';
+import aboutData from './about.json';
 
 
-const FO = Fredoka_One({
-	weight: '400',
-	subsets: ['latin'],
-});
+const conjunction = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+const books = conjunction.format(aboutData.books);
+const tv = conjunction.format(aboutData.tv);
 
 export default function Page() {
 	useEffect(() => {
@@ -27,8 +26,8 @@ export default function Page() {
 						className='inline object-cover w-60 h-60 mr-2 rounded-full'
 						src='https://avatars.githubusercontent.com/u/68373699?v=4'
 					/>
-					<h1 className={`text-6xl ${FO.className} italic py-10`}>Hi, I am Canaris,</h1>
-					<p className={`text-2xl ${FO.className}`}>
+					<h1 className={'text-6xl font-display italic py-10'}>Hi, I am Canaris,</h1>
+					<p className={'text-2xl font-display'}>
 						a <span className='description'></span>
 					</p>
 
@@ -48,12 +47,23 @@ export default function Page() {
 					>
 						<h4 className='text-3xl font-bold italic mb-4 text-center'>Other things I do</h4>
 						<p className='my-5 text-left'>
-							As with most people, I like playing games during my (occasional) free time. I mostly play War Thunder, but a few other ones I occasionally touch are Phantom Forces, MLBB and Minecraft. <br />
-							I also like reading books, and my favourite author Rick Riordan. My favourite series are Percy Jackson and the Olympians, but I also like the Heroes of Olympus and the Trials of Apollo series. <br />
-							And yes, I main Germany and USA.
+							I grind War Thunder on a daily basis (am currently grinding for the YAH-64 and the SL to buy it), and play Ace Combat 7: Skies Unknown and World of Tanks Blitz on and off.
+
+							On rare occasions I decide to play MLBB and Minecraft.
+							<br /><br />
+							I also like reading books, my favourites being Percy Jackson and Heroes of Olympus series. Currently reading {books} and watching {tv}.
 						</p>
 					</div>
+					<div
+						data-aos='fade-left'
+						className='p-10 rounded-lg items-center max-w-4xl mt-10 sm:w-full bg-slate-300 shadow-2xl w-full'
+					>
+						<h4 className='text-3xl font-bold italic mb-4 text-center'>Accounts</h4>
+						<div className='grid grid-cols-1 sm:grid-cols-4 gap-4'>
+							<p><a className='underline text-blue-600 hover:text-blue-800 visited:text-indigo-600' href='https://github.com/DET171'>GitHub <i className='fa-brands fa-github' /></a></p>
+						</div>
 
+					</div>
 				</main>
 			</div>
 		</div>

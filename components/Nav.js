@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-// TODO: Change all nav links back to next/link after Nextjs page titles are fixed
 export default function App() {
 	const navLinkStyle = 'text-gray-600 duration-200 hover:bg-gray-400 px-3 py-2 rounded-md text-sm font-medium';
 
@@ -12,9 +11,9 @@ export default function App() {
 					<div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
 						<div className='sm:ml-6 sm:block'>
 							<div className='flex space-x-4'>
-								<a href='/' className={navLinkStyle}>Home</a>
-								<a href='/projects' className={navLinkStyle}>Projects</a>
-								<a href='/blog' className={navLinkStyle}>Blog</a>
+								<Link href='/' className={navLinkStyle}>Home</Link>
+								<Link href='/projects' className={navLinkStyle}>Projects</Link>
+								<Link href='/blog' className={navLinkStyle}>Blog</Link>
 								<a className={navLinkStyle} href='https://github.com/DET171/' target='_blank' rel='noreferrer'>
 									GitHub&nbsp;&nbsp;<i className='fab fa-github' />
 								</a>

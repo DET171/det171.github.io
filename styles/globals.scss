@@ -1,6 +1,6 @@
 @tailwind base;
 @tailwind components;
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto&family=Source+Sans+Pro&display=swap');
 @tailwind utilities;
 @import 'typed';
 
@@ -9,6 +9,7 @@ html, body {
 	scroll-behavior: smooth;
 	scroll-padding-top: 80px;
 }
+
 
 @font-face {
 	font-family: 'Cascadia Code';
