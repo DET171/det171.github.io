@@ -59,8 +59,19 @@ export default function Page() {
 						className='p-10 rounded-lg items-center max-w-4xl mt-10 sm:w-full bg-slate-300 shadow-2xl w-full'
 					>
 						<h4 className='text-3xl font-bold italic mb-4 text-center'>Accounts</h4>
-						<div className='grid grid-cols-1 sm:grid-cols-4 gap-4'>
-							<p><a className='underline text-blue-600 hover:text-blue-800 visited:text-indigo-600' href='https://github.com/DET171'>GitHub <i className='fa-brands fa-github' /></a></p>
+						<div className='grid grid-cols-1 sm:grid-cols-4'>
+							<a className='w-full bg-black text-white p-4 font-display flex justify-center items-center' href='https://github.com/DET171'>
+								GitHub <i className='fa-brands fa-github' />
+							</a>
+							{/* spotify */}
+							<a className='w-full bg-green-500 text-white p-4 font-display flex justify-center items-center' href='https://open.spotify.com/user/31nqyh64eqc4ettmmzwhxe7nhfvq'>
+								Spotify <i className='fa-brands fa-spotify' />
+							</a>
+							{/* discord */}
+							<a className='w-full bg-blue-800 text-white p-4 font-display'>
+								Discord <i className='fa-brands fa-discord' /> 725573213622632468
+							</a>
+
 						</div>
 
 					</div>
