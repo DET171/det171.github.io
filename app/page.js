@@ -61,15 +61,15 @@ export default function Page() {
 						<h4 className='text-3xl font-bold italic mb-4 text-center'>Accounts</h4>
 						<div className='grid grid-cols-1 sm:grid-cols-4'>
 							<a className='w-full bg-black text-white p-4 font-display flex justify-center items-center' href='https://github.com/DET171'>
-								GitHub <i className='fa-brands fa-github' />
+								GitHub&nbsp;<i className='fa-brands fa-github' />
 							</a>
 							{/* spotify */}
 							<a className='w-full bg-green-500 text-white p-4 font-display flex justify-center items-center' href='https://open.spotify.com/user/31nqyh64eqc4ettmmzwhxe7nhfvq'>
-								Spotify <i className='fa-brands fa-spotify' />
+								Spotify&nbsp;<i className='fa-brands fa-spotify' />
 							</a>
 							{/* discord */}
 							<a className='w-full bg-blue-800 text-white p-4 font-display'>
-								Discord <i className='fa-brands fa-discord' /> 725573213622632468
+								Discord&nbsp;<i className='fa-brands fa-discord' /> 725573213622632468
 							</a>
 
 						</div>
