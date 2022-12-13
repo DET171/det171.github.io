@@ -7,7 +7,8 @@
     "build": "next build",
     "build-static": "vercel build",
     "start": "next start",
-    "lint": "eslint . --ext mdx,js,jsx,ts,tsx"
+    "createStat": "node scripts/createPost.js",
+    "lint": "eslint . --ext js,jsx,ts,tsx --ignore-path .gitignore"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.0",
@@ -23,6 +24,7 @@
     "dayjs": "^1.11.5",
     "gray-matter": "^4.0.3",
     "katex": "^0.16.3",
+    "lottie-react": "^2.3.1",
     "next": "^13.0.3",
     "next-mdx-remote": "^4.1.0",
     "prism-themes": "^1.9.0",

@@ -14,6 +14,7 @@ export default function App() {
 								<Link href='/' className={navLinkStyle}>Home</Link>
 								<Link href='/projects' className={navLinkStyle}>Projects</Link>
 								<Link href='/blog' className={navLinkStyle}>Blog</Link>
+								<Link href='/daily-shitposts' className={navLinkStyle}>Statuses</Link>
 								<a className={navLinkStyle} href='https://github.com/DET171/' target='_blank' rel='noreferrer'>
 									GitHub&nbsp;&nbsp;<i className='fab fa-github' />
 								</a>

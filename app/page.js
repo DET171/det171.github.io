@@ -55,23 +55,26 @@ export default function Page() {
 						</p>
 					</div>
 					<div
-						data-aos='fade-left'
+						data-aos='zoom-in-up'
 						className='p-10 rounded-lg items-center max-w-4xl mt-10 sm:w-full bg-slate-300 shadow-2xl w-full'
 					>
 						<h4 className='text-3xl font-bold italic mb-4 text-center'>Accounts</h4>
 						<div className='grid grid-cols-1 sm:grid-cols-4'>
-							<a className='w-full bg-black text-white p-4 font-display flex justify-center items-center' href='https://github.com/DET171'>
+							<a data-aos='fade-left' className='w-full bg-black text-white p-4 font-display flex justify-center items-center' href='https://github.com/DET171'>
 								GitHub&nbsp;<i className='fa-brands fa-github' />
 							</a>
 							{/* spotify */}
-							<a className='w-full bg-green-500 text-white p-4 font-display flex justify-center items-center' href='https://open.spotify.com/user/31nqyh64eqc4ettmmzwhxe7nhfvq'>
+							<a data-aos='fade-down' className='w-full bg-green-500 text-white p-4 font-display flex justify-center items-center' href='https://open.spotify.com/user/31nqyh64eqc4ettmmzwhxe7nhfvq'>
 								Spotify&nbsp;<i className='fa-brands fa-spotify' />
 							</a>
 							{/* discord */}
-							<a className='w-full bg-blue-800 text-white p-4 font-display'>
+							<a data-aos='fade-down' className='w-full bg-blue-800 text-white p-4 font-display'>
 								Discord&nbsp;<i className='fa-brands fa-discord' /> 725573213622632468
 							</a>
-
+							{/* war thunder */}
+							<a data-aos='fade-right' className='w-full bg-red-600 text-white p-4 font-display flex justify-center items-center' href='https://warthunder.com/en/community/userinfo/?nick=admiralcanaris'>
+								War Thunder&nbsp;<i className='fa-solid fa-jet-fighter'></i><br />
+							</a>
 						</div>
 
 					</div>
