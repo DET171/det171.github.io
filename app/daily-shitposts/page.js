@@ -31,7 +31,7 @@ export default async function App() {
 						return dateB - dateA;
 					})
 					.map((status) => (
-						<div key={status.date} className='duration-300 p-10 items-center max-w-4xl mt-10 sm:w-full bg-zinc-300 shadow-2xl w-full hover:shadow-[0_45px_80px_-20px_rgba(0,0,0,0.3)]'>
+						<div key={status.date} className='duration-300 hover:scale-110 p-10 items-center max-w-4xl mt-10 sm:w-full bg-zinc-300 shadow-2xl w-full hover:shadow-[0_45px_80px_-20px_rgba(0,0,0,0.3)]'>
 							<h4 className='text-3xl font-bold italic mb-4 text-center'>{status.date}</h4>
 							<div className='my-5 text-left prose w-full max-w-none' dangerouslySetInnerHTML={{
 								__html: status.content,
