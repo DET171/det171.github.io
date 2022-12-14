@@ -7,7 +7,7 @@
     "build": "next build",
     "build-static": "vercel build",
     "start": "next start",
-    "createStat": "node scripts/createPost.js",
+    "newPost": "node scripts/createPost.js",
     "lint": "eslint . --ext js,jsx,ts,tsx --ignore-path .gitignore"
   },
   "dependencies": {
@@ -21,6 +21,8 @@
     "@next/font": "^13.0.1",
     "@next/mdx": "^13.0.1",
     "aos": "^2.3.4",
+    "chalk": "^4.1.2",
+    "consola": "^2.15.3",
     "dayjs": "^1.11.5",
     "gray-matter": "^4.0.3",
     "katex": "^0.16.3",
