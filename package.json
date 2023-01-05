@@ -18,7 +18,7 @@
     "@mapbox/rehype-prism": "^0.8.0",
     "@mdx-js/loader": "^2.1.5",
     "@mdx-js/react": "^2.1.5",
-    "@next/font": "^13.0.1",
+    "@next/font": "^13.0.7",
     "@next/mdx": "^13.0.1",
     "aos": "^2.3.4",
     "chalk": "^4.1.2",
