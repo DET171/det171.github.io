@@ -15,7 +15,7 @@ This challenge was classified as a forensics challenge, and the description was 
 
 ![chall description](./image.png)
 
-We go ahead and run a `binwalk` on `capture.sal`, and we're met with the following:
+Let's go ahead and run a `binwalk` on `capture.sal`:
 
 ```bash
 $ binwalk -e capture.sal
@@ -53,7 +53,7 @@ $ strings digital-2.bin
 <SALEAE>
 ```
 
-After running it a couple times, we can see that each `.bin` file contains the string `<SALEAE>`. A quick google search tells us that this is the header for a Saleae Logic Analyzer file, so we go ahead and download the Logic 2 analyzer they have kindly provided us with ([link](https://www.saleae.com/downloads/)).
+After running it a couple times, we can see that each `.bin` file contains the string `<SALEAE>`. A quick google search tells us that this is the header for a Saleae Logic Analyzer file, so let's go ahead and download the Logic 2 analyzer they have kindly provided us with ([link](https://www.saleae.com/downloads/)).
 
 After downloading it, we open `capture.sal` and we're met with the following:
 
