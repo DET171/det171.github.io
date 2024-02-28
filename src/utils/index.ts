@@ -1,6 +1,6 @@
-export { getFormattedDate } from "./date";
-export { elementHasClass, toggleClass, rootInDarkMode } from "./domElement";
-export { getAllPosts, sortMDByDate, getUniqueTags, getUniqueTagsWithCount } from "./post";
-export { generateToc } from "./generateToc";
-export type { TocItem } from "./generateToc";
-export { getWebmentionsForUrl } from "./webmentions";
+export { getFormattedDate } from './date';
+export { elementHasClass, rootInDarkMode, toggleClass } from './domElement';
+export { generateToc } from './generateToc';
+export type { TocItem } from './generateToc';
+export { getAllPosts, getUniqueTags, getUniqueTagsWithCount, sortMDByDate } from './post';
+export { getWebmentionsForUrl } from './webmentions';

@@ -8,6 +8,7 @@
 		"postbuild": "pagefind --site dist",
 		"preview": "astro preview",
 		"format": "prettier -w --cache . && prettier -w --cache **/*.astro",
+		"lint": "eslint --cache --fix . && eslint --cache --fix **/*.astro",
 		"check": "astro check"
 	},
 	"dependencies": {

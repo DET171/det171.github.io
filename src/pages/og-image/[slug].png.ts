@@ -1,31 +1,31 @@
-import type { APIContext, InferGetStaticPropsType } from "astro";
-import satori, { type SatoriOptions } from "satori";
-import { html } from "satori-html";
-import { Resvg } from "@resvg/resvg-js";
-import { siteConfig } from "@/site-config";
-import { getAllPosts, getFormattedDate } from "@/utils";
+import type { APIContext, InferGetStaticPropsType } from 'astro';
 
-import RobotoMono from "@/assets/roboto-mono-regular.ttf";
-import RobotoMonoBold from "@/assets/roboto-mono-700.ttf";
+import RobotoMonoBold from '@/assets/roboto-mono-700.ttf';
+import RobotoMono from '@/assets/roboto-mono-regular.ttf';
+import { siteConfig } from '@/site-config';
+import { getAllPosts, getFormattedDate } from '@/utils';
+import { Resvg } from '@resvg/resvg-js';
+import satori, { type SatoriOptions } from 'satori';
+import { html } from 'satori-html';
 
 const ogOptions: SatoriOptions = {
-	width: 1200,
-	height: 630,
 	// debug: true,
 	fonts: [
 		{
-			name: "Roboto Mono",
 			data: Buffer.from(RobotoMono),
+			name: 'Roboto Mono',
+			style: 'normal',
 			weight: 400,
-			style: "normal",
 		},
 		{
-			name: "Roboto Mono",
 			data: Buffer.from(RobotoMonoBold),
+			name: 'Roboto Mono',
+			style: 'normal',
 			weight: 700,
-			style: "normal",
 		},
 	],
+	height: 630,
+	width: 1200,
 };
 
 const markup = (title: string, pubDate: string) =>
@@ -60,18 +60,18 @@ const markup = (title: string, pubDate: string) =>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 export async function GET(context: APIContext) {
-	const { title, pubDate } = context.props as Props;
+	const { pubDate, title } = context.props as Props;
 
 	const postDate = getFormattedDate(pubDate, {
-		weekday: "long",
-		month: "long",
+		month: 'long',
+		weekday: 'long',
 	});
 	const svg = await satori(markup(title, postDate), ogOptions);
 	const png = new Resvg(svg).render().asPng();
 	return new Response(png, {
 		headers: {
-			"Content-Type": "image/png",
-			"Cache-Control": "public, max-age=31536000, immutable",
+			'Cache-Control': 'public, max-age=31536000, immutable',
+			'Content-Type': 'image/png',
 		},
 	});
 }
@@ -83,8 +83,8 @@ export async function getStaticPaths() {
 		.map((post) => ({
 			params: { slug: post.slug },
 			props: {
-				title: post.data.title,
 				pubDate: post.data.updatedDate ?? post.data.publishDate,
+				title: post.data.title,
 			},
 		}));
 }

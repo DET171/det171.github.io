@@ -25,3 +25,6 @@ pnpm-debug.log*
 .astro
 
 .yarn/install-state.gz
+
+.eslintcache
+.prettiercache

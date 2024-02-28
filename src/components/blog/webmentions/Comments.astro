@@ -1,8 +1,8 @@
 ---
-import type { WebmentionsChildren } from "@/types";
+import type { WebmentionsChildren } from '@/types';
 
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
 	mentions: WebmentionsChildren[];
@@ -10,10 +10,10 @@ interface Props {
 
 const { mentions } = Astro.props;
 
-const validComments = ["mention-of", "in-reply-to"];
+const validComments = ['mention-of', 'in-reply-to'];
 
 const comments = mentions.filter(
-	(mention) => validComments.includes(mention["wm-property"]) && mention.content?.text,
+	(mention) => validComments.includes(mention['wm-property']) && mention.content?.text,
 );
 
 /**
@@ -26,13 +26,13 @@ const comments = mentions.filter(
 	!!comments.length && (
 		<div>
 			<p class="mb-0 text-accent-2">
-				<strong>{comments.length}</strong> Mention{comments.length > 1 ? "s" : ""}
+				<strong>{comments.length}</strong> Mention{comments.length > 1 ? 's' : ''}
 			</p>
 			<ul class="mt-0 divide-y divide-textColor/20 ps-0" role="list">
 				{comments.map((mention) => (
 					<li class="my-0 flex items-start gap-x-5 py-5">
-						{mention.author?.photo && mention.author.photo !== "" ? (
-							mention.author.url && mention.author.url !== "" ? (
+						{mention.author?.photo && mention.author.photo !== '' ? (
+							mention.author.url && mention.author.url !== '' ? (
 								<a
 									class="not-prose shrink-0 overflow-hidden rounded-full outline-none ring-2 ring-textColor hover:ring-4 hover:ring-link focus-visible:ring-4 focus-visible:ring-link"
 									href={mention.author.url}
