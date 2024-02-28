@@ -58,7 +58,6 @@ function rawFonts(ext: string[]) {
 	return {
 		name: 'vite-plugin-raw-fonts',
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-expect-error:next-line
 		transform(_, id) {
 			if (ext.some((e) => id.endsWith(e))) {
 				const buffer = fs.readFileSync(id);
