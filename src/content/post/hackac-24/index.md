@@ -1,9 +1,8 @@
 ---
 title: "HACK@AC '24"
-publishDate: "28 February 2024"
-description: "A couple of write-ups for the HACK@AC 2024 Capture the Flag event"
-tags: ["ctf", "forensics", "writeup"]
-ogImage: "/social-card.png"
+publishDate: '28 February 2024'
+description: 'A couple of write-ups for the HACK@AC 2024 Capture the Flag event'
+tags: ['ctf', 'forensics', 'writeup']
 draft: false
 ---
 
