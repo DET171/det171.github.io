@@ -23,7 +23,6 @@ def index():
 	try:
 		if 'access_token' in  request.cookies:
 			access = jwt.decode(request.cookies['access_token'], app.config['SECRET'], algorithms=['HS256'])
-			print(access)
 			return render_template('home.html', access=access)
 
 		else:
