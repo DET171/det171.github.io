@@ -140,12 +140,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/markdown-remark@npm:4.2.1":
-  version: 4.2.1
-  resolution: "@astrojs/markdown-remark@npm:4.2.1"
+"@astrojs/markdown-remark@npm:4.3.2":
+  version: 4.3.2
+  resolution: "@astrojs/markdown-remark@npm:4.3.2"
   dependencies:
     "@astrojs/prism": "npm:^3.0.0"
     github-slugger: "npm:^2.0.0"
+    hast-util-from-html: "npm:^2.0.0"
+    hast-util-to-text: "npm:^4.0.0"
     import-meta-resolve: "npm:^4.0.0"
     mdast-util-definitions: "npm:^6.0.0"
     rehype-raw: "npm:^7.0.0"
@@ -154,19 +156,21 @@ __metadata:
     remark-parse: "npm:^11.0.0"
     remark-rehype: "npm:^11.0.0"
     remark-smartypants: "npm:^2.0.0"
-    shikiji: "npm:^0.9.18"
+    shiki: "npm:^1.1.2"
     unified: "npm:^11.0.4"
+    unist-util-remove-position: "npm:^5.0.0"
     unist-util-visit: "npm:^5.0.0"
+    unist-util-visit-parents: "npm:^6.0.0"
     vfile: "npm:^6.0.1"
-  checksum: 10c0/4afc661c94e59c984f5074f9ad83c6c4985470d3e956936aad85d5509a01858db02e88fdc7a914958e35854b333f5dec92b1b65afade2329f1d26105aee42b24
+  checksum: 10c0/39a3add360fec697a46e05f23b11752b26188b1ce034399de52c87157e970f145a573f795337eef1508f3e5b749de489c1efdc2dd8653ccbf5da3f312bf35cae
   languageName: node
   linkType: hard
 
-"@astrojs/mdx@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@astrojs/mdx@npm:2.1.1"
+"@astrojs/mdx@npm:2.2.2":
+  version: 2.2.2
+  resolution: "@astrojs/mdx@npm:2.2.2"
   dependencies:
-    "@astrojs/markdown-remark": "npm:4.2.1"
+    "@astrojs/markdown-remark": "npm:4.3.2"
     "@mdx-js/mdx": "npm:^3.0.0"
     acorn: "npm:^8.11.2"
     es-module-lexer: "npm:^1.4.1"
@@ -183,7 +187,7 @@ __metadata:
     vfile: "npm:^6.0.1"
   peerDependencies:
     astro: ^4.0.0
-  checksum: 10c0/8722d8d1dd6a2a2a54e2ff93395b0123e19217adae60c54e290a029736a6e3b70ba14a7dedab3dd5cc3fddc4c86f5d1c017b542f3e54a374efe2c999b8bf973c
+  checksum: 10c0/f6ae60c9fdb908ba396ecfa6edafe78e9b9d788e093dfdc3b89fef2fdc800c09b45de49dfbf1ac8bae3d3169852ba5517d493e721ccfa4e77cb93a857c4c9bcb
   languageName: node
   linkType: hard
 
@@ -1467,6 +1471,13 @@ __metadata:
   version: 4.12.0
   resolution: "@rollup/rollup-win32-x64-msvc@npm:4.12.0"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@shikijs/core@npm:1.2.3":
+  version: 1.2.3
+  resolution: "@shikijs/core@npm:1.2.3"
+  checksum: 10c0/298afbb0b5c285434166aa5dc24e86054e53e3c13d51c410a2d8ca2860324bda02305ee31e5b5ff4b923262e269272addd783a0037011998e70051d8cff79941
   languageName: node
   linkType: hard
 
@@ -3383,7 +3394,7 @@ __metadata:
   resolution: "det171-github-io@workspace:."
   dependencies:
     "@astrojs/check": "npm:^0.5.6"
-    "@astrojs/mdx": "npm:2.1.1"
+    "@astrojs/mdx": "npm:2.2.2"
     "@astrojs/rss": "npm:4.0.5"
     "@astrojs/sitemap": "npm:3.1.1"
     "@astrojs/tailwind": "npm:5.1.0"
@@ -5145,6 +5156,18 @@ __metadata:
     web-namespaces: "npm:^2.0.0"
     zwitch: "npm:^2.0.0"
   checksum: 10c0/3c0c7fba026e0c4be4675daf7277f9ff22ae6da801435f1b7104f7740de5422576f1c025023c7b3df1d0a161e13a04c6ab8f98ada96eb50adb287b537849a2bd
+  languageName: node
+  linkType: hard
+
+"hast-util-to-text@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "hast-util-to-text@npm:4.0.0"
+  dependencies:
+    "@types/hast": "npm:^3.0.0"
+    "@types/unist": "npm:^3.0.0"
+    hast-util-is-element: "npm:^3.0.0"
+    unist-util-find-after: "npm:^5.0.0"
+  checksum: 10c0/868f6b871b12db496e49f07470b87415ef77a3b439d4fce007a1e42c438f8320d76c5231b37e54f4188bce2af1e24c76728d86ee4cf076245ec86d3b6820dbe2
   languageName: node
   linkType: hard
 
@@ -8883,6 +8906,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"shiki@npm:^1.1.2":
+  version: 1.2.3
+  resolution: "shiki@npm:1.2.3"
+  dependencies:
+    "@shikijs/core": "npm:1.2.3"
+  checksum: 10c0/ec29a2d54ee647e2859a45dc7d1393215465acfc65c10b29d3c0b22bccec63f036d0ab27c30ab7c7138f48be050e9f06f0db1337098c830d86f97a9018dfb6ef
+  languageName: node
+  linkType: hard
+
 "shikiji-core@npm:0.9.19":
   version: 0.9.19
   resolution: "shikiji-core@npm:0.9.19"
@@ -9810,6 +9842,16 @@ __metadata:
   dependencies:
     imurmurhash: "npm:^0.1.4"
   checksum: 10c0/cb811d9d54eb5821b81b18205750be84cb015c20a4a44280794e915f5a0a70223ce39066781a354e872df3572e8155c228f43ff0cce94c7cbf4da2cc7cbdd635
+  languageName: node
+  linkType: hard
+
+"unist-util-find-after@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "unist-util-find-after@npm:5.0.0"
+  dependencies:
+    "@types/unist": "npm:^3.0.0"
+    unist-util-is: "npm:^6.0.0"
+  checksum: 10c0/a7cea473c4384df8de867c456b797ff1221b20f822e1af673ff5812ed505358b36f47f3b084ac14c3622cb879ed833b71b288e8aa71025352a2aab4c2925a6eb
   languageName: node
   linkType: hard
 
