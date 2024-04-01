@@ -1580,13 +1580,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^8.56.2":
-  version: 8.56.4
-  resolution: "@types/eslint@npm:8.56.4"
+"@types/eslint@npm:^8.56.7":
+  version: 8.56.7
+  resolution: "@types/eslint@npm:8.56.7"
   dependencies:
     "@types/estree": "npm:*"
     "@types/json-schema": "npm:*"
-  checksum: 10c0/c2a7dd579d71e463cbc627248969878ac28b5a5b117b54f44939ee646eeec3e3d2b3a4e0061d3d7fab9d84cef302e3744f3d746e29fc86fb10a48b95b11fa5e9
+  checksum: 10c0/159bb5ae2f78d905b9263240c75d07b60c26e1bcaecee8c775a7bb0cf7362f5dcdd286259ba6289ab62f989b87048090b2420619f7170a0abbd83cb68b5e0699
   languageName: node
   linkType: hard
 
@@ -3392,7 +3392,7 @@ __metadata:
     "@resvg/resvg-js": "npm:^2.6.0"
     "@tailwindcss/aspect-ratio": "npm:^0.4.2"
     "@tailwindcss/typography": "npm:^0.5.10"
-    "@types/eslint": "npm:^8.56.2"
+    "@types/eslint": "npm:^8.56.7"
     "@typescript-eslint/eslint-plugin": "npm:^7.0.1"
     "@typescript-eslint/parser": "npm:^7.0.1"
     astro: "npm:4.2.4"
