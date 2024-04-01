@@ -206,13 +206,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/sitemap@npm:3.1.1":
-  version: 3.1.1
-  resolution: "@astrojs/sitemap@npm:3.1.1"
+"@astrojs/sitemap@npm:3.1.2":
+  version: 3.1.2
+  resolution: "@astrojs/sitemap@npm:3.1.2"
   dependencies:
     sitemap: "npm:^7.1.1"
     zod: "npm:^3.22.4"
-  checksum: 10c0/13bbdf65a7a831baa560d2765e63727403f493797ff9d294181c34d2bdc677a5b66926a1e66f352f3f892a4f4d2c932c1c593b2d3929cde8bc6004ec78bf841c
+  checksum: 10c0/8c68a67d8f6cd3685908ee62bc98fd25d11d8931ba2dc7cc31994a4cf1d9d05d93de7545a2f5d626aedd638ba61784f3595b709b9634efe15165e990fdbb4713
   languageName: node
   linkType: hard
 
@@ -3385,7 +3385,7 @@ __metadata:
     "@astrojs/check": "npm:^0.5.6"
     "@astrojs/mdx": "npm:2.1.1"
     "@astrojs/rss": "npm:4.0.5"
-    "@astrojs/sitemap": "npm:3.1.1"
+    "@astrojs/sitemap": "npm:3.1.2"
     "@astrojs/tailwind": "npm:5.1.0"
     "@iconify-json/mdi": "npm:^1.1.64"
     "@pagefind/default-ui": "npm:^1.0.4"
