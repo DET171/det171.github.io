@@ -3407,7 +3407,7 @@ __metadata:
     eslint-plugin-import: "npm:^2.29.1"
     eslint-plugin-jsx-a11y: "npm:^6.8.0"
     eslint-plugin-markdown: "npm:^3.0.1"
-    eslint-plugin-perfectionist: "npm:^2.5.0"
+    eslint-plugin-perfectionist: "npm:^2.9.0"
     eslint-plugin-regexp: "npm:^2.2.0"
     eslint-plugin-typescript-sort-keys: "npm:^3.1.0"
     mdast-util-to-string: "npm:^4.0.0"
@@ -4043,9 +4043,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-perfectionist@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "eslint-plugin-perfectionist@npm:2.5.0"
+"eslint-plugin-perfectionist@npm:^2.9.0":
+  version: 2.9.0
+  resolution: "eslint-plugin-perfectionist@npm:2.9.0"
   dependencies:
     "@typescript-eslint/utils": "npm:^6.13.0"
     minimatch: "npm:^9.0.3"
@@ -4065,7 +4065,7 @@ __metadata:
       optional: true
     vue-eslint-parser:
       optional: true
-  checksum: 10c0/61814512b26fd856e3f0d06ad77fe502a00e3109b33f39651fbbf5e0b233caa8f8732a8363b8948107318839083f4bf87400c90bc5d0ced475d9d56ea3bb4892
+  checksum: 10c0/f323d983fa1d4805c68b03ad0b7174f1784678766be4679dd43281d28f1557b8c48ed6d3bd76e7812ad6505e29fd241d5f31c3269ce40bc05692d0ce4a8aa6ed
   languageName: node
   linkType: hard
 
