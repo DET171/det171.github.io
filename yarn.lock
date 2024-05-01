@@ -206,13 +206,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/sitemap@npm:3.1.1":
-  version: 3.1.1
-  resolution: "@astrojs/sitemap@npm:3.1.1"
+"@astrojs/sitemap@npm:3.1.4":
+  version: 3.1.4
+  resolution: "@astrojs/sitemap@npm:3.1.4"
   dependencies:
     sitemap: "npm:^7.1.1"
+    stream-replace-string: "npm:^2.0.0"
     zod: "npm:^3.22.4"
-  checksum: 10c0/13bbdf65a7a831baa560d2765e63727403f493797ff9d294181c34d2bdc677a5b66926a1e66f352f3f892a4f4d2c932c1c593b2d3929cde8bc6004ec78bf841c
+  checksum: 10c0/883ce35c18957212c1c2d87048a3e783d3cbdf05a796a0af8d0dc6aa5f6fcf2e13d2adc152a9446beacf7ec90dac8f59d5cc932b615c062edff042350ec63fc7
   languageName: node
   linkType: hard
 
@@ -3385,7 +3386,7 @@ __metadata:
     "@astrojs/check": "npm:^0.5.6"
     "@astrojs/mdx": "npm:2.1.1"
     "@astrojs/rss": "npm:4.0.5"
-    "@astrojs/sitemap": "npm:3.1.1"
+    "@astrojs/sitemap": "npm:3.1.4"
     "@astrojs/tailwind": "npm:5.1.0"
     "@iconify-json/mdi": "npm:^1.1.64"
     "@pagefind/default-ui": "npm:^1.0.4"
@@ -9076,6 +9077,13 @@ __metadata:
   dependencies:
     debug: "npm:2"
   checksum: 10c0/585508801423bd6c53f6dda9d78e4b743a08ab72e8e2680431fa855ef950e59c849ec2838f2a00c59af655ff8463e90f660f9169a816e63a3ca159cf713bae5c
+  languageName: node
+  linkType: hard
+
+"stream-replace-string@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "stream-replace-string@npm:2.0.0"
+  checksum: 10c0/6cdf6108c57a869c1282dece0728bd7a8e314855bee71992436460192cdf46b3c976451e1e114716af209b2bfefa0e7e4581ca0eebc330d9dfcde341a72d50af
   languageName: node
   linkType: hard
 
