@@ -10,7 +10,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 const projects: { desc: string; href: string; title: string }[] = [
 	{
-		desc: 'The website I wrote for my high school\'s student council',
+		desc: "The website I wrote for my high school's student council",
 		href: 'https://hsc-site.vercel.app/',
 		title: 'HSC Site',
 	},
@@ -42,6 +42,7 @@ const projects: { desc: string; href: string; title: string }[] = [
 			{
 				allPostsByDate.map((p) => (
 					<li class="flex flex-col gap-x-2 sm:flex-row">
+						{/* @ts-ignore */}
 						<PostPreview post={p} />
 					</li>
 				))
