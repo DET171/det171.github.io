@@ -3,7 +3,6 @@ title: 'Sieberrsec CTF 5.0'
 publishDate: '10 March 2024'
 description: 'Some write-ups for the Sieberrsec CTF 5.0 competition'
 tags: ['ctf', 'writeup']
-ogImage: '/social-card.png'
 draft: false
 ---
 
