@@ -14,14 +14,14 @@ export const siteConfig: SiteConfig = {
 		},
 	},
 	// Meta property used as the default description meta property
-	description: 'Web development, CTF, gaming, and other musings.',
+	description: 'A collection of my late night musings and ramblings.',
 	// HTML lang property, found in src/layouts/Base.astro L:18
 	lang: 'en-GB',
 	// Meta property, found in src/components/BaseHead.astro L:42
 	ogLocale: 'en_GB',
 	// Meta property used to construct the meta title property, found in src/components/BaseHead.astro L:11
 	// eslint-disable-next-line quotes
-	title: "Canaris's Blog",
+	title: 'The Scatterbrain Scratchpad',
 	webmentions: {
 		link: 'https://webmention.io/canaris.is-a.dev/webmention',
 	},

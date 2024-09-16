@@ -1,5 +1,5 @@
 ---
-import { menuLinks } from '@/site-config';
+import { menuLinks, siteConfig } from '@/site-config';
 
 import Search from '../Search.astro';
 import ThemeToggle from '../ThemeToggle.astro';
@@ -14,7 +14,7 @@ const url = new URL(Astro.request.url);
 			class="inline-flex items-center grayscale hover:filter-none sm:relative sm:inline-block"
 			href="/"
 		>
-			<span class="text-xl font-bold sm:text-2xl">Canaris</span>
+			<span class="text-xl font-bold sm:text-2xl">{siteConfig.title}</span>
 		</a>
 		<nav
 			aria-label="Main menu"
