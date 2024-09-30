@@ -1,0 +1,54 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+	"formatter": {
+		"enabled": true,
+		"useEditorconfig": true,
+		"formatWithErrors": false,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 100,
+		"attributePosition": "auto",
+		"bracketSpacing": true,
+		"ignore": [
+			"*.astro",
+			"**/*.min.js",
+			"**/node_modules",
+			"**/.cache",
+			"**/pnpm-lock.yaml",
+			"**/dist",
+			".vscode"
+		]
+	},
+	"organizeImports": { "enabled": true },
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"a11y": { "noSvgWithoutTitle": "off" },
+			"suspicious": { "noExplicitAny": "warn" },
+			"complexity": {
+				"noForEach": "warn"
+			}
+		},
+		"ignore": ["**/node_modules", "**/.cache", "**/dist", ".vscode"]
+	},
+	"javascript": {
+		"formatter": {
+			"jsxQuoteStyle": "single",
+			"quoteProperties": "asNeeded",
+			"trailingCommas": "all",
+			"semicolons": "always",
+			"arrowParentheses": "always",
+			"bracketSameLine": false,
+			"quoteStyle": "single",
+			"attributePosition": "auto",
+			"bracketSpacing": true
+		}
+	},
+	"overrides": [
+		{ "include": ["**/*.astro"] },
+		{ "include": ["*.mdx", "*.md"], "formatter": { "lineWidth": 80 } }
+	]
+}

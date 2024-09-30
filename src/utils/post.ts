@@ -1,15 +1,15 @@
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 /** Note: this function filters out draft posts based on the environment */
 export async function getAllPosts() {
-	return await getCollection('post', ({ data }) => {
+	return await getCollection("post", ({ data }) => {
 		return import.meta.env.PROD ? !data.draft : true;
 	});
 }
 
-export function sortMDByDate(posts: CollectionEntry<'post'>[]) {
+export function sortMDByDate(posts: CollectionEntry<"post">[]) {
 	return posts.sort((a, b) => {
 		const aDate = new Date(a.data.updatedDate ?? a.data.publishDate).valueOf();
 		const bDate = new Date(b.data.updatedDate ?? b.data.publishDate).valueOf();
@@ -18,19 +18,17 @@ export function sortMDByDate(posts: CollectionEntry<'post'>[]) {
 }
 
 /** Note: This function doesn't filter draft posts, pass it the result of getAllPosts above to do so. */
-export function getAllTags(posts: CollectionEntry<'post'>[]) {
+export function getAllTags(posts: CollectionEntry<"post">[]) {
 	return posts.flatMap((post) => [...post.data.tags]);
 }
 
 /** Note: This function doesn't filter draft posts, pass it the result of getAllPosts above to do so. */
-export function getUniqueTags(posts: CollectionEntry<'post'>[]) {
+export function getUniqueTags(posts: CollectionEntry<"post">[]) {
 	return [...new Set(getAllTags(posts))];
 }
 
 /** Note: This function doesn't filter draft posts, pass it the result of getAllPosts above to do so. */
-export function getUniqueTagsWithCount(
-	posts: CollectionEntry<'post'>[],
-): [string, number][] {
+export function getUniqueTagsWithCount(posts: CollectionEntry<"post">[]): [string, number][] {
 	return [
 		...getAllTags(posts).reduce(
 			(acc, t) => acc.set(t, (acc.get(t) || 0) + 1),

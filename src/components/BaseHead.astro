@@ -1,18 +1,18 @@
 ---
-import type { SiteMeta } from '@/types';
+import type { SiteMeta } from "@/types";
 
-import { siteConfig } from '@/site-config';
+import { siteConfig } from "@/site-config";
 
-import '../styles/global.css';
+import "../styles/global.css";
 
 type Props = SiteMeta;
 
 const { articleDate, description, ogImage, title } = Astro.props;
 
-const titleSeparator = '•';
+const titleSeparator = "•";
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(ogImage ? ogImage : '/social-card.png', Astro.url).href;
+const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url).href;
 ---
 
 <meta charset="utf-8" />
@@ -36,7 +36,7 @@ const socialImageURL = new URL(ogImage ? ogImage : '/social-card.png', Astro.url
 <meta content="" name="theme-color" />
 
 {/* Open Graph / Facebook */}
-<meta content={articleDate ? 'article' : 'website'} property="og:type" />
+<meta content={articleDate ? "article" : "website"} property="og:type" />
 <meta content={title} property="og:title" />
 <meta content={description} property="og:description" />
 <meta content={canonicalURL} property="og:url" />

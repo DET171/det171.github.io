@@ -35,5 +35,5 @@
 }
 
 .giscus {
-	@apply mt-10 -mb-6;
+	@apply -mb-6 mt-10;
 }

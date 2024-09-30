@@ -1,4 +1,4 @@
-import type { MarkdownHeading } from 'astro';
+import type { MarkdownHeading } from "astro";
 
 export interface TocItem extends MarkdownHeading {
 	subheadings: TocItem[];
@@ -7,10 +7,9 @@ export interface TocItem extends MarkdownHeading {
 function diveChildren(item: TocItem, depth: number): TocItem[] {
 	if (depth === 1 || !item.subheadings.length) {
 		return item.subheadings;
-	} else {
-		// e.g., 2
-		return diveChildren(item.subheadings[item.subheadings.length - 1], depth - 1);
 	}
+	// e.g., 2
+	return diveChildren(item.subheadings[item.subheadings.length - 1], depth - 1);
 }
 
 export function generateToc(headings: readonly MarkdownHeading[]) {

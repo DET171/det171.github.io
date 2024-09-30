@@ -1,8 +1,8 @@
 ---
-import { menuLinks, siteConfig } from '@/site-config';
+import { menuLinks, siteConfig } from "@/site-config";
 
-import Search from '../Search.astro';
-import ThemeToggle from '../ThemeToggle.astro';
+import Search from "../Search.astro";
+import ThemeToggle from "../ThemeToggle.astro";
 
 const url = new URL(Astro.request.url);
 ---
@@ -10,7 +10,7 @@ const url = new URL(Astro.request.url);
 <header class="group relative mb-16 flex items-center" id="main-header">
 	<div class="flex sm:flex-col">
 		<a
-			aria-current={url.pathname === '/' ? 'page' : false}
+			aria-current={url.pathname === "/" ? "page" : false}
 			class="inline-flex items-center grayscale hover:filter-none sm:relative sm:inline-block"
 			href="/"
 		>
@@ -24,7 +24,7 @@ const url = new URL(Astro.request.url);
 			{
 				menuLinks.map((link) => (
 					<a
-						aria-current={url.pathname === link.path ? 'page' : false}
+						aria-current={url.pathname === link.path ? "page" : false}
 						class="px-4 py-4 sm:py-0 sm:hover:underline"
 						data-astro-prefetch
 						href={link.path}
@@ -79,7 +79,7 @@ const url = new URL(Astro.request.url);
 </header>
 
 <script>
-	import { toggleClass } from '@/utils';
+	import { toggleClass } from "@/utils";
 
 	class MobileNavBtn extends HTMLElement {
 		private headerEl: HTMLElement;
@@ -87,20 +87,20 @@ const url = new URL(Astro.request.url);
 		private mobileButtonEl: HTMLButtonElement;
 
 		toggleMobileMenu = () => {
-			toggleClass(this.headerEl, 'menu-open');
+			toggleClass(this.headerEl, "menu-open");
 			this.menuOpen = !this.menuOpen;
-			this.mobileButtonEl.setAttribute('aria-expanded', this.menuOpen.toString());
+			this.mobileButtonEl.setAttribute("aria-expanded", this.menuOpen.toString());
 		};
 
 		constructor() {
 			super();
-			this.headerEl = document.getElementById('main-header')!;
-			this.mobileButtonEl = this.querySelector('button') as HTMLButtonElement;
+			this.headerEl = document.getElementById("main-header")!;
+			this.mobileButtonEl = this.querySelector("button") as HTMLButtonElement;
 			this.menuOpen = false;
 
-			this.mobileButtonEl.addEventListener('click', this.toggleMobileMenu);
+			this.mobileButtonEl.addEventListener("click", this.toggleMobileMenu);
 		}
 	}
 
-	customElements.define('mobile-button', MobileNavBtn);
+	customElements.define("mobile-button", MobileNavBtn);
 </script>

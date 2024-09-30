@@ -1,4 +1,4 @@
-import { siteConfig } from '@/site-config';
+import { siteConfig } from "@/site-config";
 
 const dateFormat = new Intl.DateTimeFormat(siteConfig.date.locale, siteConfig.date.options);
 
@@ -6,9 +6,9 @@ export function getFormattedDate(
 	date: Date | number | string,
 	options?: Intl.DateTimeFormatOptions,
 ) {
-	if (typeof options !== 'undefined') {
+	if (typeof options !== "undefined") {
 		return new Date(date).toLocaleDateString(siteConfig.date.locale, {
-			...(siteConfig.date.options),
+			...siteConfig.date.options,
 			...options,
 		});
 	}

@@ -57,34 +57,34 @@
 
 <script>
 	// Note that if you fire the theme-change event outside of this component, it will not be reflected in the button's aria-checked attribute
-	import { rootInDarkMode } from '@/utils';
+	import { rootInDarkMode } from "@/utils";
 
 	class ThemeToggle extends HTMLElement {
 		#controller: AbortController | undefined;
 
 		connectedCallback() {
-			const button = this.querySelector('button')!;
+			const button = this.querySelector("button")!;
 			// set aria role value
-			button.setAttribute('role', 'switch');
-			button.setAttribute('aria-checked', String(rootInDarkMode()));
+			button.setAttribute("role", "switch");
+			button.setAttribute("aria-checked", String(rootInDarkMode()));
 			// Abort signal
 			const { signal } = (this.#controller = new AbortController());
 
 			// button event
 			button.addEventListener(
-				'click',
+				"click",
 				() => {
 					// invert theme
-					let themeChangeEvent = new CustomEvent('theme-change', {
+					let themeChangeEvent = new CustomEvent("theme-change", {
 						detail: {
-							theme: rootInDarkMode() ? 'light' : 'dark',
+							theme: rootInDarkMode() ? "light" : "dark",
 						},
 					});
 					// dispatch event -> ThemeProvider.astro
 					document.dispatchEvent(themeChangeEvent);
 
 					// set the aria-checked attribute
-					button.setAttribute('aria-checked', String(rootInDarkMode()));
+					button.setAttribute("aria-checked", String(rootInDarkMode()));
 				},
 				{ signal },
 			);
@@ -95,5 +95,5 @@
 		}
 	}
 
-	customElements.define('theme-toggle', ThemeToggle);
+	customElements.define("theme-toggle", ThemeToggle);
 </script>

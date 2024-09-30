@@ -1,61 +1,61 @@
-import type { SiteConfig } from '@/types';
-import type { AstroExpressiveCodeOptions } from 'astro-expressive-code';
+import type { SiteConfig } from "@/types";
+import type { AstroExpressiveCodeOptions } from "astro-expressive-code";
 
 export const siteConfig: SiteConfig = {
 	// Used as both a meta property (src/components/BaseHead.astro L:31 + L:49) & the generated satori png (src/pages/og-image/[slug].png.ts)
-	author: 'Canaris',
+	author: "Canaris",
 	// Date.prototype.toLocaleDateString() parameters, found in src/utils/date.ts.
 	date: {
-		locale: 'en-GB',
+		locale: "en-GB",
 		options: {
-			day: 'numeric',
-			month: 'short',
-			year: 'numeric',
+			day: "numeric",
+			month: "short",
+			year: "numeric",
 		},
 	},
 	// Meta property used as the default description meta property
-	description: 'A collection of my late night musings and ramblings.',
+	description: "A collection of my late night musings and ramblings.",
 	// HTML lang property, found in src/layouts/Base.astro L:18
-	lang: 'en-GB',
+	lang: "en-GB",
 	// Meta property, found in src/components/BaseHead.astro L:42
-	ogLocale: 'en_GB',
+	ogLocale: "en_GB",
 	// Meta property used to construct the meta title property, found in src/components/BaseHead.astro L:11
 	// eslint-disable-next-line quotes
-	title: 'The Scatterbrain Scratchpad',
+	title: "The Scratchpad",
 	webmentions: {
-		link: 'https://webmention.io/canaris.is-a.dev/webmention',
+		link: "https://webmention.io/canaris.is-a.dev/webmention",
 	},
 };
 
 // Used to generate links in both the Header & Footer.
 export const menuLinks: { path: string; title: string }[] = [
 	{
-		path: '/',
-		title: 'Home',
+		path: "/",
+		title: "Home",
 	},
 	{
-		path: '/about/',
-		title: 'About',
+		path: "/about/",
+		title: "About",
 	},
 	{
-		path: '/posts/',
-		title: 'Blog',
+		path: "/posts/",
+		title: "Blog",
 	},
 ];
 
 // https://expressive-code.com/reference/configuration/
 export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 	styleOverrides: {
-		borderRadius: '4px',
+		borderRadius: "4px",
 		codeFontFamily:
 			'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;',
-		codeFontSize: '0.875rem',
-		codeLineHeight: '1.7142857rem',
-		codePaddingInline: '1rem',
+		codeFontSize: "0.875rem",
+		codeLineHeight: "1.7142857rem",
+		codePaddingInline: "1rem",
 		frames: {
-			frameBoxShadowCssValue: 'none',
+			frameBoxShadowCssValue: "none",
 		},
-		uiLineHeight: 'inherit',
+		uiLineHeight: "inherit",
 	},
 	themeCssSelector(theme, { styleVariants }) {
 		// If one dark and one light theme are available
@@ -69,6 +69,6 @@ export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 		return `[data-theme="${theme.name}"]`;
 	},
 	// One dark, one light theme => https://expressive-code.com/guides/themes/#available-themes
-	themes: ['dracula', 'github-light'],
+	themes: ["dracula", "github-light"],
 	useThemedScrollbars: false,
 };

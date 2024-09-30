@@ -1,8 +1,8 @@
 ---
-import { getWebmentionsForUrl } from '@/utils';
+import { getWebmentionsForUrl } from "@/utils";
 
-import Comments from './Comments.astro';
-import Likes from './Likes.astro';
+import Comments from "./Comments.astro";
+import Likes from "./Likes.astro";
 
 const url = new URL(Astro.url.pathname, Astro.site);
 
@@ -20,7 +20,7 @@ if (!webMentions.length) return;
 				<Comments mentions={webMentions} />
 			</div>
 			<p class="mt-8">
-				Responses powered by{' '}
+				Responses powered by{" "}
 				<a href="https://webmention.io" rel="noopener noreferrer" target="_blank">
 					Webmentions
 				</a>
