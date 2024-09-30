@@ -36,7 +36,7 @@
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/typography": "^0.5.15",
 		"@typescript-eslint/eslint-plugin": "^8.3.0",
-		"@typescript-eslint/parser": "^8.3.0",
+		"@typescript-eslint/parser": "^8.7.0",
 		"astro-eslint-parser": "^1.0.2",
 		"autoprefixer": "^10.4.20",
 		"globals": "^15.9.0",
