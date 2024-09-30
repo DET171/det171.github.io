@@ -1304,10 +1304,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pagefind/default-ui@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@pagefind/default-ui@npm:1.1.0"
-  checksum: 10c0/6443644ecfe1c9a69375b1cf0a0d1e86330befbd626b558cee8d30598345dc4f89addb7c3955de724ba21ffa035312e0083495ac16f734b442be8d26494217e3
+"@pagefind/default-ui@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@pagefind/default-ui@npm:1.1.1"
+  checksum: 10c0/a1069183ae31daa8b71344abd6cdd85b7183b2af4f88fdc89d8c5298ea0e653e7f8a89f95d10ee54053ab55c36dd1142b6768efd1a7c29d589432b432b7a291b
   languageName: node
   linkType: hard
 
@@ -3108,7 +3108,7 @@ __metadata:
     "@astrojs/tailwind": "npm:^5.1.0"
     "@biomejs/biome": "npm:1.9.2"
     "@iconify-json/mdi": "npm:^1.2.0"
-    "@pagefind/default-ui": "npm:^1.1.0"
+    "@pagefind/default-ui": "npm:^1.1.1"
     "@resvg/resvg-js": "npm:^2.6.2"
     "@tailwindcss/aspect-ratio": "npm:^0.4.2"
     "@tailwindcss/typography": "npm:^0.5.15"
