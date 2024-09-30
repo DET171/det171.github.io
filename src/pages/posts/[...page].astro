@@ -1,11 +1,11 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import type { GetStaticPaths, Page } from "astro";
+import type { CollectionEntry } from 'astro:content';
+import type { GetStaticPaths, Page } from 'astro';
 
-import Pagination from "@/components/Paginator.astro";
-import PostPreview from "@/components/blog/PostPreview.astro";
-import PageLayout from "@/layouts/Base.astro";
-import { getAllPosts, getUniqueTags, sortMDByDate } from "@/utils";
+import Pagination from '@/components/Paginator.astro';
+import PostPreview from '@/components/blog/PostPreview.astro';
+import PageLayout from '@/layouts/Base.astro';
+import { getAllPosts, getUniqueTags, sortMDByDate } from '@/utils';
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getAllPosts();
@@ -15,27 +15,27 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 interface Props {
-	page: Page<CollectionEntry<"post">>;
+	page: Page<CollectionEntry<'post'>>;
 	uniqueTags: string[];
 }
 
 const { page, uniqueTags } = Astro.props;
 
 const meta = {
-	description: "Ready my collection of posts and the things that interest me",
-	title: "Posts",
+	description: 'Ready my collection of posts and the things that interest me',
+	title: 'Posts',
 };
 
 const paginationProps = {
 	...(page.url.prev && {
 		prevUrl: {
-			text: "← Previous Posts",
+			text: '← Previous Posts',
 			url: page.url.prev,
 		},
 	}),
 	...(page.url.next && {
 		nextUrl: {
-			text: "Next Posts →",
+			text: 'Next Posts →',
 			url: page.url.next,
 		},
 	}),

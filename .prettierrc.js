@@ -2,19 +2,19 @@
 module.exports = {
 	printWidth: 100,
 	semi: true,
-	singleQuote: false,
+	singleQuote: true,
 	tabWidth: 2,
 	useTabs: true,
-	plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss" /* Must come last */],
+	plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss' /* Must come last */],
 	overrides: [
 		{
-			files: "**/*.astro",
+			files: '**/*.astro',
 			options: {
-				parser: "astro",
+				parser: 'astro',
 			},
 		},
 		{
-			files: ["*.mdx", "*.md"],
+			files: ['*.mdx', '*.md'],
 			options: {
 				printWidth: 80,
 			},

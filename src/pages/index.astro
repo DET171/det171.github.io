@@ -1,8 +1,8 @@
 ---
-import SocialList from "@/components/SocialList.astro";
-import PostPreview from "@/components/blog/PostPreview.astro";
-import PageLayout from "@/layouts/Base.astro";
-import { getAllPosts, sortMDByDate } from "@/utils";
+import SocialList from '@/components/SocialList.astro';
+import PostPreview from '@/components/blog/PostPreview.astro';
+import PageLayout from '@/layouts/Base.astro';
+import { getAllPosts, sortMDByDate } from '@/utils';
 
 const MAX_POSTS = 10;
 const allPosts = await getAllPosts();
@@ -11,13 +11,13 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 const projects: { desc: string; href: string; title: string }[] = [
 	{
 		desc: "A website I wrote for my high school's student council",
-		href: "https://hsc-site.vercel.app/",
-		title: "HSC Site",
+		href: 'https://hsc-site.vercel.app/',
+		title: 'HSC Site',
 	},
 	{
-		desc: "Another website I wrote for my computing club",
-		href: "https://ec3-site.vercel.app/",
-		title: "EC3 Site",
+		desc: 'Another website I wrote for my computing club',
+		href: 'https://ec3-site.vercel.app/',
+		title: 'EC3 Site',
 	},
 	// {
 	// 	desc: 'A (half-baked) REST API frontend for codebreaker.xyz',
@@ -27,7 +27,7 @@ const projects: { desc: string; href: string; title: string }[] = [
 ];
 ---
 
-<PageLayout meta={{ title: "Home" }}>
+<PageLayout meta={{ title: 'Home' }}>
 	<section>
 		<h1 class="title mb-6">Hi, I'm Canaris</h1>
 		<p class="mb-4">I'm currently a high school student who enjoys programming and gaming</p>

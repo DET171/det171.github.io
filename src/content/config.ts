@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, z } from 'astro:content';
 
 function removeDupsAndLowerCase(array: string[]) {
 	if (!array.length) return array;
@@ -30,7 +30,7 @@ const post = defineCollection({
 				.optional()
 				.transform((str) => (str ? new Date(str) : undefined)),
 		}),
-	type: "content",
+	type: 'content',
 });
 
 export const collections = { post };

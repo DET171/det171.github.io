@@ -1,11 +1,11 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import type { GetStaticPaths, Page } from "astro";
+import type { CollectionEntry } from 'astro:content';
+import type { GetStaticPaths, Page } from 'astro';
 
-import Pagination from "@/components/Paginator.astro";
-import PostPreview from "@/components/blog/PostPreview.astro";
-import PageLayout from "@/layouts/Base.astro";
-import { getAllPosts, getUniqueTags, sortMDByDate } from "@/utils";
+import Pagination from '@/components/Paginator.astro';
+import PostPreview from '@/components/blog/PostPreview.astro';
+import PageLayout from '@/layouts/Base.astro';
+import { getAllPosts, getUniqueTags, sortMDByDate } from '@/utils';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 	const allPosts = await getAllPosts();
@@ -22,7 +22,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 };
 
 interface Props {
-	page: Page<CollectionEntry<"post">>;
+	page: Page<CollectionEntry<'post'>>;
 }
 
 const { page } = Astro.props;
@@ -36,13 +36,13 @@ const meta = {
 const paginationProps = {
 	...(page.url.prev && {
 		prevUrl: {
-			text: "← Previous Tags",
+			text: '← Previous Tags',
 			url: page.url.prev,
 		},
 	}),
 	...(page.url.next && {
 		nextUrl: {
-			text: "Next Tags →",
+			text: 'Next Tags →',
 			url: page.url.next,
 		},
 	}),

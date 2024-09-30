@@ -42,7 +42,7 @@ export interface WebmentionsCache {
 export interface WebmentionsChildren {
 	author: Author | null;
 	content?: Content | null;
-	"mention-of": string;
+	'mention-of': string;
 	name?: null | string;
 	photo?: null | string[];
 	published?: null | string;
@@ -51,13 +51,13 @@ export interface WebmentionsChildren {
 	syndication?: null | string[];
 	type: string;
 	url: string;
-	"wm-id": number;
-	"wm-private": boolean;
-	"wm-property": string;
-	"wm-protocol": string;
-	"wm-received": string;
-	"wm-source": string;
-	"wm-target": string;
+	'wm-id': number;
+	'wm-private': boolean;
+	'wm-property': string;
+	'wm-protocol': string;
+	'wm-received': string;
+	'wm-source': string;
+	'wm-target': string;
 }
 
 export interface Author {
@@ -68,7 +68,7 @@ export interface Author {
 }
 
 export interface Content {
-	"content-type": string;
+	'content-type': string;
 	html: string;
 	text: string;
 	value: string;
@@ -79,6 +79,6 @@ export interface Rels {
 }
 
 export interface Summary {
-	"content-type": string;
+	'content-type': string;
 	value: string;
 }
