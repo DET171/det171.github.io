@@ -40,12 +40,14 @@ const projects: { desc: string; href: string; title: string }[] = [
 		<h2 class="title mb-4 text-xl">Posts</h2>
 		<ul class="space-y-4">
 			{
-				allPostsByDate.map((p) => (
-					<li class="flex flex-col gap-x-2 sm:flex-row">
-						{/* @ts-ignore */}
-						<PostPreview post={p} />
-					</li>
-				))
+				allPostsByDate
+					.filter((p) => !p.data?.hidden)
+					.map((p) => (
+						<li class="flex flex-col gap-x-2 sm:flex-row">
+							{/* @ts-ignore */}
+							<PostPreview post={p} />
+						</li>
+					))
 			}
 		</ul>
 	</section>
