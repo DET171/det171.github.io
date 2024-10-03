@@ -3,7 +3,7 @@ title: Artificial Intelligence in the Judiciary
 description: Artificial Judicial Intelligence?
 publishDate: 04 October 2024
 tags: [ramblings]
-draft: true
+draft: false
 hidden: true
 ---
 
