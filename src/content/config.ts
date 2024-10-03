@@ -16,7 +16,7 @@ const post = defineCollection({
 					src: image(),
 				})
 				.optional(),
-			description: z.string().min(50).max(160),
+			description: z.string().min(20).max(160),
 			draft: z.boolean().default(false),
 			hidden: z.boolean().default(false),
 			ogImage: z.string().optional(),
