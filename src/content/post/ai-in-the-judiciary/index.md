@@ -3,7 +3,7 @@ title: Artificial Intelligence in the Judiciary
 description: Artificial Judicial Intelligence?
 publishDate: 04 October 2024
 tags: [ramblings]
-draft: true
+draft: false
 hidden: true
 ---
 
@@ -21,12 +21,12 @@ It is also suggested that an AI can be vested with curbed powers similar to that
 
 An AI could be vested with similar powers, and could be used to assist in the resolution of certain cases that do not require the full attention of a judge. This would free up judges to focus on more complex cases, and would also help to greatly reduce the backlog of cases that many courts face.
 
-For instance, an AI arbitrator could be empowered to preside over cases involving petty offences or misdemeanors, or perhaps even civil cases where the amount in controversy is below a certain threshold uncontested divorce proceedings. This would greatly reduce the burden on the courts, and would also help to ensure that cases are resolved in a timely manner. The AI could be programmed to follow a set of guidelines or rules, and could be used to issue decisions in cases where the facts are not hotly disputed and the law is relatively clear.
+For instance, an AI arbitrator could be empowered to preside over cases involving petty offences or misdemeanors, uncontested divorce proceedings or perhaps even civil cases where the amount in controversy is below a certain threshold. This would greatly reduce the burden on the courts, and would also help to ensure that cases are resolved in a timely manner. The AI could be programmed to follow a set of guidelines or rules, and could be used to issue decisions in cases where the facts are not hotly disputed and the law is relatively clear.
 
 An AI could also be used to preside over certain other civil cases where both parties consent, or where the parties agree to be bound by the decision of the AI.
 
 These decisions, however, coming from an inferior "officer" or court, would still ultimately be subject to review by an Article III court as seen in _United States v. Raddatz, 447 U.S. 667 (1980)_, where the Supreme Court held that the "ultimate decision" is reserved for the district court judge and that magistrates "are constantly subject to the court’s control". In _Mathews v. Weber, 423 U.S. 261 (1976)_, the Court also observed that "[magistrates] helps the court focus on the relevant portions of what might be a voluminous record and move directly to any substantial legal arguments by putting before the court a preliminary evaluation of the evidence in the record", and though "substantially assisting the court", "the authority—and the responsibility—to make informed, final determination... remains with the judge."
 
-An AI could be limited in similar ways to an Article I tribunal where its jurisdiction is limited, and while capable of issuing decisions, it would still be subject to review by a higher court or officer like the district judge (de novo if necessary). These decisions would of course also then be eligible for appeal to a Circuit Court of Appeals, and ultimately the Supreme Court if necessary and certiorari is granted.
+An AI could be limited in similar ways to an Article I tribunal where its jurisdiction is limited, and while capable of issuing decisions, it would still be subject to review by a higher court or officer like the district judge (de novo if necessary). These decisions would of course also then be eligible for appeal to a Circuit Court of Appeals, and ultimately the Supreme Court if necessary and certiorari is granted. This would ensure that the AI does not overstep its bounds and that the ultimate decision still lies with a human judge, reducing any potential grievances that may arise from the allegations of bias or unfairness from an algorithm.
 
-This would ensure that the AI does not overstep its bounds and that the ultimate decision still lies with a human judge, reducing any potential grievances that may arise from the allegations of bias or unfairness from an algorithm.
+[to be completed]
