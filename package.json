@@ -39,7 +39,7 @@
 		"@typescript-eslint/parser": "^8.3.0",
 		"astro-eslint-parser": "^1.0.2",
 		"autoprefixer": "^10.4.20",
-		"globals": "^15.9.0",
+		"globals": "^15.13.0",
 		"mdast-util-to-string": "^4.0.0",
 		"pagefind": "^1.1.0",
 		"postcss": "^8.4.43",
