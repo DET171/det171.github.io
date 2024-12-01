@@ -41,7 +41,7 @@
 		"autoprefixer": "^10.4.20",
 		"globals": "^15.9.0",
 		"mdast-util-to-string": "^4.0.0",
-		"pagefind": "^1.1.0",
+		"pagefind": "^1.2.0",
 		"postcss": "^8.4.43",
 		"postcss-html": "^1.7.0",
 		"postcss-import": "^16.1.0",
