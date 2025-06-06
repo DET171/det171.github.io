@@ -5,7 +5,7 @@ import { getCategoryUrl, getFileName } from '@utils/url-utils.ts';
 
 export async function getSortedPosts() {
 	const allBlogPosts = await getCollection('posts', (post) => {
-		return (import.meta.env.PROD ? post.data.draft !== true : true);
+		return import.meta.env.PROD ? post.data.draft !== true : true;
 	});
 
 	const sorted = allBlogPosts.sort((a, b) => {
@@ -33,7 +33,7 @@ export type Tag = {
 
 export async function getTagList(): Promise<Tag[]> {
 	const allBlogPosts = await getCollection<'posts'>('posts', (post) => {
-		return (import.meta.env.PROD ? post.data.draft !== true : true);
+		return import.meta.env.PROD ? post.data.draft !== true : true;
 	});
 
 	const countMap: { [key: string]: number } = {};
@@ -60,7 +60,7 @@ export type Category = {
 
 export async function getCategoryList(): Promise<Category[]> {
 	const allBlogPosts = await getCollection<'posts'>('posts', (post) => {
-		return (import.meta.env.PROD ? post.data.draft !== true : true);
+		return import.meta.env.PROD ? post.data.draft !== true : true;
 	});
 	const count: { [key: string]: number } = {};
 	allBlogPosts.map((post: { data: { category: string | null } }) => {
