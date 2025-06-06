@@ -8,7 +8,7 @@ const contentDir = (dir: string) =>
 
 const postsCollection = defineCollection({
 	loader: glob({
-		pattern: '**/*.md',
+		pattern: '**/[^_]*.{md,mdx}',
 		base: contentDir('posts'),
 	}),
 	schema: z.object({
@@ -32,7 +32,7 @@ const postsCollection = defineCollection({
 
 const specCollection = defineCollection({
 	loader: glob({
-		pattern: '**/*.md',
+		pattern: '**/[^_]*.{md,mdx}',
 		base: contentDir('spec'),
 	}),
 });

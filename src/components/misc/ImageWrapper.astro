@@ -38,6 +38,9 @@ if (isLocal) {
 		console.error(
 			`\n[ERROR] Image file not found: ${normalizedPath.replace('../../', 'src/')}`,
 		);
+		throw new Error(
+			`Image file not found: ${normalizedPath.replace('../../', 'src/')}`,
+		);
 	}
 	img = await file();
 }

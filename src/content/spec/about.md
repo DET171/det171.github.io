@@ -1,3 +1,3 @@
 # About
 
-Hello, World!
+Hi, I'm Canaris.	
