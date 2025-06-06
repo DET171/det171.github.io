@@ -1,6 +1,16 @@
+import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+const contentDir = (dir: string) =>
+	pathToFileURL(path.resolve(import.meta.dirname, './content', dir)).href;
 
 const postsCollection = defineCollection({
+	loader: glob({
+		pattern: '**/*.md',
+		base: contentDir('posts'),
+	}),
 	schema: z.object({
 		title: z.string(),
 		published: z.date(),
@@ -20,9 +30,14 @@ const postsCollection = defineCollection({
 	}),
 });
 
-const specsCollection = defineCollection({});
+const specCollection = defineCollection({
+	loader: glob({
+		pattern: '**/*.md',
+		base: contentDir('spec'),
+	}),
+});
 
 export const collections = {
 	posts: postsCollection,
-	spec: specsCollection,
+	spec: specCollection,
 };

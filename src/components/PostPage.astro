@@ -9,6 +9,8 @@ type PostEntry = CollectionEntry<'posts'>;
 
 let delay = 0;
 const interval = 50;
+
+console.log(page.data);
 ---
 
 <div
@@ -23,7 +25,7 @@ const interval = 50;
 				category={entry.data.category}
 				published={entry.data.published}
 				updated={entry.data.updated}
-				url={getPostUrlBySlug(entry.slug)}
+				url={getPostUrlBySlug(entry.id)}
 				image={entry.data.image}
 				description={entry.data.description}
 				draft={entry.data.draft}

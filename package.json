@@ -8,7 +8,7 @@
 		"build": "astro build && pagefind --site dist",
 		"preview": "astro preview",
 		"astro": "astro",
-		"type-check": "tsc --noEmit --isolatedDeclarations",
+		"type-check": "tsc --noEmit",
 		"new-post": "node scripts/new-post.mjs",
 		"format": "prettier ./**/*.{astro,svelte} --write && biome format --write .",
 		"lint": "biome check --write .",
