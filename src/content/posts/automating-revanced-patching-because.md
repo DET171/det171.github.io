@@ -362,7 +362,6 @@ const downloadTool = async (
 		}
 		// delete existing file if it exists
 		if (existingFile) {
-			// await fs.unlink(`${saveDir}/${existingFile}`);
 			await fs.unlink(path.join(saveDir, existingFile));
 		}
 
