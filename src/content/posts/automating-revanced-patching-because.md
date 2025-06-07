@@ -5,7 +5,7 @@ description: 'Image unrelated'
 image: '../../assets/images/feixiao.jpg'
 tags: ['ReVanced', 'Automation']
 category: 'Programming'
-draft: true
+draft: false
 lang: en
 ---
 
@@ -737,3 +737,191 @@ export const downloadApk = async (
 	}
 };
 ```
+
+Npw just import this function in `src/index.ts` and call it:
+```diff lang='ts' title=src/index.ts
+import { exit } from 'node:process';
+import console from 'consola';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
++import { downloadApk } from './download-apk.js';
+import { downloadTools } from './download-tools.js';
+
+const args = await yargs(hideBin(process.argv))
+	.option('app', {
+		alias: 'a',
+		type: 'string',
+		description: 'The name of the app to patch with ReVanced',
+		demandOption: true,
+	})
+	.option('app-ver', {
+		alias: 'av',
+		type: 'string',
+		description: 'The version of the app to patch',
+		demandOption: false,
+	})
+	.parse();
+
+console.box('ReVanced - Patching App:', args.app);
+
+// Download the latest ReVanced patches and CLI
+try {
+	const { patches, cli, apkEditor } = await downloadTools();
+
++	const apkFile = await downloadApk(args.app, apkEditor, args.appVer);
+} catch (error) {
+	console.error('Failed to download ReVanced patches or CLI:', error);
+	process.exit(1);
+}
+```
+
+## Patching
+Patching should be relatively trivial given the above:
+```ts title=src/patch-apk.ts
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { exit } from 'node:process';
+import { runCommand } from './utils.js';
+
+export const patchApk = async (
+	apkFile: string,
+	patchFiles: string,
+	revancedCli: string,
+	outDir_: string = './out',
+): Promise<string> => {
+	try {
+		const outDir = path.resolve(import.meta.dirname, '..', outDir_);
+		const outFilePath = path.join(outDir, path.basename(apkFile));
+		const tempDir = path.join(import.meta.dirname, '..', '.revanced');
+
+		console.log(apkFile, patchFiles, revancedCli);
+
+		await fs.mkdir(outDir, { recursive: true });
+
+		await runCommand('java', [
+			'-jar',
+			revancedCli,
+			'patch',
+			'-p',
+			patchFiles,
+			'-t',
+			tempDir,
+			'-o',
+			outFilePath,
+			apkFile,
+		]);
+
+		return outFilePath;
+	} catch (error) {
+		console.error('Failed to patch APK:', error);
+		exit(1);
+	}
+};
+```
+
+Just import this in `src/index.ts` and call it:
+```diff lang='ts' title=src/index.ts
+import { exit } from 'node:process';
+import console from 'consola';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+import { downloadApk } from './download-apk.js';
+import { downloadTools } from './download-tools.js';
++import { patchApk } from './patch-apk.js';
+
+const args = await yargs(hideBin(process.argv))
+	.option('app', {
+		alias: 'a',
+		type: 'string',
+		description: 'The name of the app to patch with ReVanced',
+		demandOption: true,
+	})
+	.option('app-ver', {
+		alias: 'av',
+		type: 'string',
+		description: 'The version of the app to patch',
+		demandOption: false,
+	})
+	.parse();
+
+console.box('ReVanced - Patching App:', args.app);
+
+// Download the latest ReVanced patches and CLI
+try {
+	const { patches, cli, apkEditor } = await downloadTools();
+
+	const apkFile = await downloadApk(args.app, apkEditor, args.appVer);
++	const patchedApk = await patchApk(apkFile, patches, cli);
++	console.success('Patching completed successfully!');
+} catch (error) {
+	console.error('Failed to download ReVanced patches or CLI:', error);
+	process.exit(1);
+}
+```
+
+Now, you can run the script with:
+```bash
+pnpm start -a com.google.android.apps.youtube.music --av 8.05.51
+```
+
+## Scheduling a Workflow
+Since the point of this was kinda to automate the process, we can use a cron job to run this script periodically.
+
+I've chosen to use GitHub Actions for this, but you can use any other CI/CD service that supports cron jobs.
+
+Create a new file `.github/workflows/patch-apps.yaml`:
+```yaml
+name: Patch Apps (Daily)
+on:
+  schedule:
+    # run daily at 6am gmt +8
+    - cron: '0 22 * * *'  # Adjust the time as needed (UTC)
+  workflow_dispatch:
+
+jobs:
+  patch-apps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'  # Specify the Node.js version
+          check-latest: true
+          
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '24'  # Specify the Java version
+          distribution: 'temurin'  # Use the Temurin distribution
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - run: |
+              sdkmanager "build-tools;36.0.0"
+              echo "$ANDROID_HOME/build-tools/36.0.0" >> "$GITHUB_PATH"
+
+      - run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Patch Spotify
+        run: pnpm start -a com.spotify.music
+
+      - name: Patch YouTube Music
+        run: pnpm start -a com.google.android.apps.youtube.music --av 8.05.51
+
+      - name: Upload patched apps
+        uses: actions/upload-artifact@v4
+        with:
+          name: patched-apps
+          path: out/*.apk
+          retention-days: 2
+```
+
+
+This should pretty much be it. You can now push this to your GitHub repository and the workflow will run daily at 6am GMT+8 (which is 10pm UTC).
