@@ -1,3 +1,4 @@
+import { type ThemeObjectOrShikiThemeName } from 'astro-expressive-code';
 import type { AUTO_MODE, DARK_MODE, LIGHT_MODE } from '@constants/constants';
 
 export type SiteConfig = {
@@ -85,4 +86,8 @@ export type BlogPostData = {
 	prevSlug?: string;
 	nextTitle?: string;
 	nextSlug?: string;
+};
+
+export type ExpressiveCodeConfig = {
+	themes: ThemeObjectOrShikiThemeName[];
 };

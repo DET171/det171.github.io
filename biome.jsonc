@@ -18,7 +18,8 @@
 	"formatter": {
 		"enabled": true,
 		"lineEnding": "lf",
-		"indentStyle": "tab"
+		"indentStyle": "tab",
+		"formatWithErrors": true
 	},
 	"organizeImports": {
 		"enabled": true

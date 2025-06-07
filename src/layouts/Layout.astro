@@ -354,17 +354,6 @@ function disableAnimation() {
 				},
 			},
 		);
-		const preElements = document.querySelectorAll('pre');
-		preElements.forEach((ele) => {
-			OverlayScrollbars(ele, {
-				scrollbars: {
-					theme: 'scrollbar-base scrollbar-dark px-2',
-					autoHide: 'leave',
-					autoHideDelay: 500,
-					autoHideSuspend: false,
-				},
-			});
-		});
 
 		const katexElements = document.querySelectorAll(
 			'.katex-display',
