@@ -319,7 +319,7 @@ const tools = {
 ```
 
 Now a function to download the files:
-```ts
+```ts title=src/download-tools.ts
 const downloadTool = async (
 	tool: keyof typeof tools,
 	saveDir: string,
@@ -377,4 +377,68 @@ const downloadTool = async (
 		throw error;
 	}
 };
+```
+
+`downloadTool` essentially takes the key of a tool (i.e. `patches`, `cli`, or `apkEditor`), the directory to save the file to, and returns the path to the downloaded file. It checks if a file with the same version already exists, and if so, it uses that instead of downloading a new one.
+
+Now, we can create a function to download all the tools:
+```ts title=src/download-tools.ts
+export async function downloadTools(
+	saveDir_: string = './tools',
+): Promise<{ patches: string; cli: string; apkEditor: string }> {
+	try {
+		const toolPaths = {} as Record<string, string>;
+		const saveDir = path.resolve(import.meta.dirname, '..', saveDir_);
+
+		// Ensure the save directory exists
+		await fs.mkdir(saveDir, { recursive: true });
+
+		for (const tool in tools) {
+			toolPaths[tool] = await downloadTool(<keyof typeof tools>tool, saveDir);
+		}
+
+		console.info(`ReVanced tools downloaded successfully to ${saveDir}`);
+
+		return toolPaths as {
+			[key in keyof typeof tools]: string;
+		};
+	} catch (error) {
+		console.error('Error fetching ReVanced tools:', error);
+		throw error;
+	}
+}
+```
+
+Edit your `src/index.ts` to import and call this function:
+```diff lang='ts' title=src/index.ts
+import { exit } from 'node:process';
+import console from 'consola';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
++import { downloadTools } from './download-tools.js';
+
+const args = await yargs(hideBin(process.argv))
+	.option('app', {
+		alias: 'a',
+		type: 'string',
+		description: 'The name of the app to patch with ReVanced',
+		demandOption: true,
+	})
+	.option('app-ver', {
+		alias: 'av',
+		type: 'string',
+		description: 'The version of the app to patch',
+		demandOption: false,
+	})
+	.parse();
+
+console.box('ReVanced - Patching App:', args.app);
+
++try {
++	const { patches, cli, apkEditor } = await downloadTools();
++
++} catch (error) {
++	console.error('Failed to download ReVanced patches or CLI:', error);
++	process.exit(1);
++}
 ```
