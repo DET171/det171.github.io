@@ -215,7 +215,7 @@ Options:
 Missing required argument: app
 ```
 
-## Downloading Required Files
+## Downloading ReVanced and Co.
 ReVanced has a CLI for patching files in addition to the the patches file itself, so we're gonna need those. We're also going to need APKEditor for merging the split APKs (tough).
 
 Before that, though, let's define some types for GitHub Releases since we'll be using the GitHub API to download the files:
