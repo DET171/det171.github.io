@@ -407,6 +407,7 @@ export async function downloadTools(
 	}
 }
 ```
+This function will download all the tools and returns the paths of them once finished.
 
 Edit your `src/index.ts` to import and call this function:
 ```diff lang='ts' title=src/index.ts
@@ -440,4 +441,299 @@ console.box('ReVanced - Patching App:', args.app);
 +	console.error('Failed to download ReVanced patches or CLI:', error);
 +	process.exit(1);
 +}
+```
+
+## Getting the APKs
+Obviously, without the APKs there'd be nothing to patch, so we'd need to do that as well. We're going to (attempt to) impersonate a browser and crawl APKPure to get them, so this isn't exactly guaranteed to work in the future.
+
+Before that however, let's write some utils:
+```ts title=src/utils.ts
+import { spawn } from 'node:child_process';
+
+type Options = Parameters<typeof spawn>[2];
+
+export const runCommand = async (
+	command: string,
+	args: string[],
+	options: Options = {},
+): Promise<void> => {
+	const child = spawn(command, args, {
+		stdio: 'inherit',
+		shell: true,
+		cwd: process.cwd(),
+		...options,
+	});
+
+	// console.log(child.spawnargs);
+
+	return new Promise((resolve, reject) => {
+		child.on('close', (code) => {
+			if (code === 0) {
+				resolve();
+			} else {
+				reject(new Error(`Command failed with exit code ${code}`));
+			}
+		});
+	});
+};
+```
+This function is basically a wrapper around `child_process.spawn` that allows us to run commands in the shell and inherit the stdio, and returns a promise that resolves when the command finishes executing.
+
+Now, back to downloading the APKs.
+
+Create a `src/download-apks.ts` and import the necessary modules:
+```ts title=src/download-apks.ts
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { exit } from 'node:process';
+import console from 'consola';
+import { JSDOM } from 'jsdom';
+import ky from 'ky';
+import { runCommand } from './utils.js';
+```
+
+Create a `ky` client with headers to impersonate a browser:
+```ts title=src/download-apks.ts
+const client = ky.create({
+	headers: {
+		'sec-ch-ua': '"Brave";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+		'sec-ch-ua-mobile': '?0',
+		'sec-ch-ua-platform': '"Windows"',
+		'upgrade-insecure-requests': '1',
+	},
+	retry: {
+		limit: 3,
+	},
+});
+```
+You can head over to your browser's Network tab and copy the headers from a request to get the headers you need.
+
+The function to scrape and get the download links for the APKs:
+```ts title=src/download-apks.ts
+const getDownloadUrl = async (
+	appId: string,
+	version?: string,
+): Promise<string> => {
+	const pageUrl = `https://apkpure.com/en/${appId}/download/${version ?? ''}`;
+
+	console.info(`Fetching download page: ${pageUrl}`);
+
+	const html = await client.get(pageUrl).text();
+	const dom = new JSDOM(html).window.document;
+
+	const versionsEl = dom.querySelector('#version-list div.show-more-content');
+
+	if (!versionsEl) {
+		throw new Error(`Versions not found for app ID: ${appId}`);
+	}
+
+	const links = [...versionsEl.querySelectorAll('a[class*=download]')]
+		.map((el) => el.getAttribute('href'))
+		.filter((l) => l !== null);
+
+	// sort the links so that the links that don't return xapk are at the front
+	// we want a single bundled APK as much as possible
+	const sortedLinks = links.sort((a, b) => {
+		if (a.includes('/XAPK/')) return 1; // xapk links go to the end
+		if (b.includes('/XAPK/')) return -1; // xapk links go to the end
+		return 0; // keep the order for non-xapk links
+	});
+
+	const armv8aLink = sortedLinks.find((link) => link.includes('v8a'));
+
+	const dlLink = armv8aLink || sortedLinks[0];
+
+	if (!dlLink) {
+		throw new Error(`Download link not found for app ID: ${appId}`);
+	}
+
+	return dlLink;
+};
+```
+This function takes the app ID and an optional version, fetches the download page, and parses the HTML element containing the download links for different variants, prioritising regular `.apk` files over `.xapk` or `.apks` files and those which specify `arm64-v8a` architecture.
+
+For the function that actually downloads the APK:
+```ts title=src/download-apks.ts
+export const downloadApk = async (
+	appId: string,
+	apkEditor: string,
+	appVer?: string,
+	saveDir_: string = './unpatched-apks',
+): Promise<string> => {
+	try {
+		const appUrl = await getDownloadUrl(appId, appVer);
+
+		console.info(`Download link found: ${appUrl}`);
+
+		const saveDir = path.resolve(
+			import.meta.dirname,
+			'..',
+			saveDir_,
+			`${appId}${appVer ? `-${appVer}` : ''}`,
+		);
+
+		const keystore = path.resolve(
+			import.meta.dirname,
+			'..',
+			'keystore/rv.keystore',
+		);
+
+		await fs.mkdir(saveDir, { recursive: true });
+		await fs.unlink(path.join(saveDir, `${appId}.apk`)).catch(() => {});
+
+		const response = await client.get(appUrl);
+
+		const content_disposition = response.headers.get('content-disposition');
+		if (!content_disposition) {
+			throw new Error('Content-Disposition header not found');
+		}
+		const filenameMatch = content_disposition.match(/filename="(.+?)"/);
+		if (!filenameMatch) {
+			throw new Error('Filename not found in Content-Disposition header');
+		}
+
+		const extension = filenameMatch[1].split('.').pop();
+
+		const filename = `${appId}.${extension}`;
+		const dlFile = path.join(saveDir, filename);
+
+		const blob = await response.blob();
+		const buffer = Buffer.from(await blob.arrayBuffer());
+		await fs.writeFile(dlFile, buffer);
+		console.info(`XAPK/APK downloaded to: ${dlFile}`);
+
+		const apkFile = path.join(saveDir, `${appId}.apk`);
+
+		if (extension === 'apk') {
+			console.info('APK file already exists, no merging needed.');
+			await fs.rename(dlFile, apkFile);
+			console.info(`APK saved to: ${apkFile}`);
+			return apkFile;
+		}
+
+		console.info(`APK downloaded and saved to: ${apkFile}`);
+
+		return apkFile;
+	} catch (error) {
+		console.error(
+			`Failed to download APK for ${appId}:`,
+			(<Error>error).message,
+		);
+		throw error;
+	}
+};
+```
+
+We still need to handle split APKs, and APKEditor conveniently has a command for that, so let's implement that as well:
+```diff lang='ts' collapse={8-56,97-107} title=src/download-apks.ts
+export const downloadApk = async (
+	appId: string,
+	apkEditor: string,
+	appVer?: string,
+	saveDir_: string = './unpatched-apks',
+): Promise<string> => {
+	try {
+		const appUrl = await getDownloadUrl(appId, appVer);
+
+		console.info(`Download link found: ${appUrl}`);
+
+		const saveDir = path.resolve(
+			import.meta.dirname,
+			'..',
+			saveDir_,
+			`${appId}${appVer ? `-${appVer}` : ''}`,
+		);
+
+		const keystore = path.resolve(
+			import.meta.dirname,
+			'..',
+			'keystore/rv.keystore',
+		);
+
+		await fs.mkdir(saveDir, { recursive: true });
+		await fs.unlink(path.join(saveDir, `${appId}.apk`)).catch(() => {});
+
+		const response = await client.get(appUrl);
+
+		const content_disposition = response.headers.get('content-disposition');
+		if (!content_disposition) {
+			throw new Error('Content-Disposition header not found');
+		}
+		const filenameMatch = content_disposition.match(/filename="(.+?)"/);
+		if (!filenameMatch) {
+			throw new Error('Filename not found in Content-Disposition header');
+		}
+
+		const extension = filenameMatch[1].split('.').pop();
+
+		const filename = `${appId}.${extension}`;
+		const dlFile = path.join(saveDir, filename);
+
+		const blob = await response.blob();
+		const buffer = Buffer.from(await blob.arrayBuffer());
+		await fs.writeFile(dlFile, buffer);
+		console.info(`XAPK/APK downloaded to: ${dlFile}`);
+
+		const apkFile = path.join(saveDir, `${appId}.apk`);
+
+		if (extension === 'apk') {
+			console.info('APK file already exists, no merging needed.');
+			await fs.rename(dlFile, apkFile);
+			console.info(`APK saved to: ${apkFile}`);
+			return apkFile;
+		}
+
++		console.info('Merging XAPK to APK...\n');
++
++		// Run the APK Editor CLI to merge the XAPK into an APK, and clean metadata & signature blocks
++		await runCommand('java', [
++			'-jar',
++			apkEditor,
++			'm',
++			'-i',
++			dlFile,
++			'-o',
++			apkFile,
++			'-clean-meta',
++		]);
++
++		// align the APK
++		console.info('Aligning APK...\n');
++		await runCommand('zipalign', [
++			'-p',
++			'-f',
++			'4',
++			apkFile,
++			apkFile.replace('.apk', '-aligned.apk'),
++		]);
++
++		// remove the original APK
++		await fs.unlink(apkFile);
++		// rename the aligned APK
++		await fs.rename(apkFile.replace('.apk', '-aligned.apk'), apkFile);
++
++		// sign the APK
++		console.info('Signing APK...\n');
++		await runCommand('apksigner', [
++			'sign',
++			'--ks',
++			keystore,
++			'--ks-pass',
++			'pass:revanced',
++			apkFile,
++		]);
++
++		console.log('');
+
+		console.info(`APK downloaded and saved to: ${apkFile}`);
+
+		return apkFile;
+	} catch (error) {
+		console.error(
+			`Failed to download APK for ${appId}:`,
+			(<Error>error).message,
+		);
+		throw error;
+	}
+};
 ```

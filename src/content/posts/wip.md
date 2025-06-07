@@ -3,8 +3,8 @@ title: WIP
 published: 2025-06-04
 description: 'Work in progress'
 image: ''
-tags: ['Example', 'WIP']
-category: 'Example'
+tags: ['Examples', 'WIP']
+category: 'Examples'
 draft: false 
 ---
 
