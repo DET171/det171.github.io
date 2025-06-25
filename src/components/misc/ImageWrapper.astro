@@ -8,7 +8,7 @@ interface Props {
 	position?: string;
 	basePath?: string;
 }
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 import { url } from '../../utils/url-utils';
 
 const { id, src, alt, position = 'center', basePath = '/' } = Astro.props;
@@ -56,7 +56,13 @@ const imageStyle = `object-position: ${position}`;
 	</div>
 	{
 		isLocal && img && (
-			<Image src={img} alt={alt || ''} class={imageClass} style={imageStyle} />
+			<Image
+				src={img}
+				alt={alt || ''}
+				class={imageClass}
+				style={imageStyle}
+				quality='low'
+			/>
 		)
 	}
 	{

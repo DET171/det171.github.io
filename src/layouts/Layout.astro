@@ -301,24 +301,24 @@ const bannerOffset =
 	function initCustomScrollbar() {
 		const bodyElement = document.querySelector('body');
 		if (!bodyElement) return;
-		OverlayScrollbars(
-			// docs say that a initialization to the body element would affect native functionality like window.scrollTo
-			// but just leave it here for now
-			{
-				target: bodyElement,
-				cancel: {
-					nativeScrollbarsOverlaid: true, // don't initialize the overlay scrollbar if there is a native one
-				},
-			},
-			{
-				scrollbars: {
-					theme: 'scrollbar-base scrollbar-auto py-1',
-					autoHide: 'move',
-					autoHideDelay: 500,
-					autoHideSuspend: false,
-				},
-			},
-		);
+		// OverlayScrollbars(
+		// 	// docs say that a initialization to the body element would affect native functionality like window.scrollTo
+		// 	// but just leave it here for now
+		// 	{
+		// 		target: bodyElement,
+		// 		cancel: {
+		// 			nativeScrollbarsOverlaid: true, // don't initialize the overlay scrollbar if there is a native one
+		// 		},
+		// 	},
+		// 	{
+		// 		scrollbars: {
+		// 			theme: 'scrollbar-base scrollbar-auto py-1',
+		// 			autoHide: 'move',
+		// 			autoHideDelay: 500,
+		// 			autoHideSuspend: false,
+		// 		},
+		// 	},
+		// );
 
 		const katexElements = document.querySelectorAll(
 			'.katex-display',
@@ -476,6 +476,7 @@ const bannerOffset =
 
 <!-- scroll configuration -->
 <script>
+	// import Lenis from 'lenis';
 	import {
 		BANNER_HEIGHT_HOME,
 		BANNER_HEIGHT,
@@ -483,12 +484,16 @@ const bannerOffset =
 		MAIN_PANEL_OVERLAPS_BANNER_HEIGHT,
 	} from '../constants/constants';
 
+	// window.lenis = new Lenis({
+	// 	anchors: true,
+	// });
+
 	const bannerEnabled = !!document.getElementById('banner-wrapper');
 	let backToTopBtn = document.getElementById('back-to-top-btn');
 	let toc = document.getElementById('toc-wrapper');
 	let navbar = document.getElementById('navbar-wrapper');
 
-	function scrollFunction() {
+	window.addEventListener('scroll', () => {
 		let bannerHeight = window.innerHeight * (BANNER_HEIGHT / 100);
 
 		if (backToTopBtn) {
@@ -539,8 +544,15 @@ const bannerOffset =
 				navbar.classList.remove('navbar-hidden');
 			}
 		}
-	}
-	window.onscroll = scrollFunction;
+	});
+
+	// function raf(time: number) {
+	// 	window.lenis.raf(time);
+	// 	requestAnimationFrame(raf);
+	// }
+
+	// // window.onscroll = raf;
+	// requestAnimationFrame(raf);
 
 	window.onresize = () => {
 		// calculate the --banner-height-extend, which needs to be a multiple of 4 to avoid blurry text
@@ -552,22 +564,6 @@ const bannerOffset =
 		);
 	};
 </script>
-
-<!-- smooth scroll -->
-<!-- <script>
-	import Lenis from 'lenis';
-	const lenis = new Lenis({
-		anchors: true,
-	});
-
-	// Use requestAnimationFrame to continuously update the scroll
-	function raf(time: number) {
-		lenis.raf(time);
-		requestAnimationFrame(raf);
-	}
-
-	requestAnimationFrame(raf);
-</script> -->
 
 <script>
 	import PhotoSwipeLightbox from 'photoswipe/lightbox';

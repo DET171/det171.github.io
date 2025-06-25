@@ -2,7 +2,7 @@
 title: Automating ReVanced Patching Because I'm Lazy
 published: 2025-06-06
 description: 'Image unrelated'
-image: '../../assets/images/feixiao.jpg'
+# image: 'feixiao.jpg'
 tags: ['ReVanced', 'Automation']
 category: 'Programming'
 draft: false

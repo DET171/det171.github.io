@@ -1,9 +1,11 @@
 import type { AstroIntegration } from '@swup/astro';
+import type Lenis from 'lenis';
 
 declare global {
 	interface Window {
 		// type from '@swup/astro' is incorrect
 		swup: AstroIntegration;
+		lenis: Lenis;
 		pagefind: {
 			search: (query: string) => Promise<{
 				results: Array<{
