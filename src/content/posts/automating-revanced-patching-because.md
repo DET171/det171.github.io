@@ -11,11 +11,12 @@ lang: en
 
 _Ignore the Feixiao pic, it just looks nice._
 
-I'll be frank, I am quite the lazy person. Min-maxxing life is kinda just my thing (money included), so naturally, I use something called [ReVanced](https://github.com/revanced/revanced-manager). For the uninformed, it is essentially a tool that allows you to patch applications, such as YouTube Music, to remove ads, add features, etc. 
+:::note
+Update: Honestly, just download your music. Not worth the pain.
 
-So, basically a successor to the now-defunct YouTube Vanced. There was a minor pain point, however, being that Spotify liked pushing updates every week or so and breaking the patches. I'd then have to spend 5-10 minutes redownloading the app from the Play Store, unsplitting it, and then patching it. Now, I'd agree that 5-10 minutes is rather insignificant, but, me being me, was bored (being allergic to holiday homework didn't help), and here we are.
+:::
 
-Anyways, lets get started.
+For those who use [ReVanced](https://github.com/revanced/revanced-manager), perhaps the most major pain point you would encounter is the need to manually patch apps like YouTube Music or Spotify every time they update. This can be quite the repetitive process and it does eventually get annoying, especially if you use these apps frequently (looking at you Spotify). Now, you may argue that 5-10 minutes may be rrather insignificant, but it is somewhat of a running joke that programmers like spending 10 hours automating a task that takes 10 minutes, so, why not?
 
 ## Prerequisites
 
