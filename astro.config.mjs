@@ -24,6 +24,8 @@ import { expressiveCodeConfig } from './src/config.ts';
 import { pluginLanguageBadge } from './src/plugins/expressive-code/language-badge.ts';
 import { pluginCustomCopyButton } from './src/plugins/expressive-code/custom-copy-button.ts';
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://canaris.is-a.dev/',
@@ -57,7 +59,7 @@ export default defineConfig({
 		}),
 		expressiveCode({
 			themes: expressiveCodeConfig.themes,
-			
+
 			plugins: [
 				pluginCollapsibleSections(),
 				pluginLineNumbers(),
@@ -104,6 +106,7 @@ export default defineConfig({
 		}),
 		svelte(),
 		sitemap(),
+		mdx(),
 	],
 	markdown: {
 		remarkPlugins: [

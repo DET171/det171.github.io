@@ -243,12 +243,7 @@ const bannerOffset =
 		setTheme,
 	} from '../utils/setting-utils';
 	import { pathsEqual, url } from '../utils/url-utils';
-	import {
-		BANNER_HEIGHT,
-		BANNER_HEIGHT_HOME,
-		BANNER_HEIGHT_EXTEND,
-		MAIN_PANEL_OVERLAPS_BANNER_HEIGHT,
-	} from '../constants/constants';
+	import { BANNER_HEIGHT } from '../constants/constants';
 	import { siteConfig } from '../config';
 
 	/* Preload fonts */
@@ -477,10 +472,22 @@ const bannerOffset =
 	} else {
 		document.addEventListener('swup:enable', swupSetup);
 	}
+</script>
 
+<!-- scroll configuration -->
+<script>
+	import {
+		BANNER_HEIGHT_HOME,
+		BANNER_HEIGHT,
+		BANNER_HEIGHT_EXTEND,
+		MAIN_PANEL_OVERLAPS_BANNER_HEIGHT,
+	} from '../constants/constants';
+
+	const bannerEnabled = !!document.getElementById('banner-wrapper');
 	let backToTopBtn = document.getElementById('back-to-top-btn');
 	let toc = document.getElementById('toc-wrapper');
 	let navbar = document.getElementById('navbar-wrapper');
+
 	function scrollFunction() {
 		let bannerHeight = window.innerHeight * (BANNER_HEIGHT / 100);
 
@@ -545,6 +552,22 @@ const bannerOffset =
 		);
 	};
 </script>
+
+<!-- smooth scroll -->
+<!-- <script>
+	import Lenis from 'lenis';
+	const lenis = new Lenis({
+		anchors: true,
+	});
+
+	// Use requestAnimationFrame to continuously update the scroll
+	function raf(time: number) {
+		lenis.raf(time);
+		requestAnimationFrame(raf);
+	}
+
+	requestAnimationFrame(raf);
+</script> -->
 
 <script>
 	import PhotoSwipeLightbox from 'photoswipe/lightbox';
