@@ -2,7 +2,7 @@
 title: Automating ReVanced Patching Because I'm Lazy
 published: 2025-06-06
 description: 'Image unrelated'
-# image: 'feixiao.jpg'
+image: 'feixiao.jpg'
 tags: ['ReVanced', 'Automation']
 category: 'Programming'
 draft: false
@@ -16,7 +16,7 @@ Update: Honestly, just download your music. Not worth the pain.
 
 :::
 
-For those who use [ReVanced](https://github.com/revanced/revanced-manager), perhaps the most major pain point you would encounter is the need to manually patch apps like YouTube Music or Spotify every time they update. This can be quite the repetitive process and it does eventually get annoying, especially if you use these apps frequently (looking at you Spotify). Now, you may argue that 5-10 minutes may be rrather insignificant, but it is somewhat of a running joke that programmers like spending 10 hours automating a task that takes 10 minutes, so, why not?
+For those who use [ReVanced](https://github.com/revanced/revanced-manager), perhaps the most major pain point about it is the need to manually patch apps like YouTube Music or Spotify every time they update. This can be quite the repetitive process and it does eventually get annoying, especially if you use these apps frequently (looking at you Spotify). Now, you may argue that 5-10 minutes may be rather insignificant, but it is somewhat of a running joke that programmers like spending 10 hours automating a task that takes 10 minutes, so, why not?
 
 ## Prerequisites
 
