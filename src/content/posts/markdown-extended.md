@@ -5,7 +5,7 @@ updated: 2024-11-29
 description: 'Read more about Markdown features in Fuwari'
 image: ''
 tags: [Demo, Examples, Markdown, Fuwari]
-category: 'Examples'
+category: 'Programming'
 draft: true
 ---
 

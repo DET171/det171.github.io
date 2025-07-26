@@ -41,8 +41,16 @@
 	code {
 		@apply overflow-hidden rounded-md bg-[var(--inline-code-bg)] px-1 py-0.5 text-[var(--inline-code-color)];
 
-		font-family: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo,
-			Monaco, Consolas, Liberation Mono, Courier New, monospace;
+		font-family:
+			"JetBrains Mono Variable",
+			ui-monospace,
+			SFMono-Regular,
+			Menlo,
+			Monaco,
+			Consolas,
+			Liberation Mono,
+			Courier New,
+			monospace;
 		&:before {
 			content: none;
 		}

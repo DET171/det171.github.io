@@ -1,5 +1,5 @@
-import { type ThemeObjectOrShikiThemeName } from 'astro-expressive-code';
 import type { AUTO_MODE, DARK_MODE, LIGHT_MODE } from '@constants/constants';
+import type { ThemeObjectOrShikiThemeName } from 'astro-expressive-code';
 
 export type SiteConfig = {
 	title: string;

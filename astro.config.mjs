@@ -1,9 +1,13 @@
+import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
+import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections';
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import swup from '@swup/astro';
-import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
+import expressiveCode from 'astro-expressive-code';
+import icon from 'astro-icon';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeComponents from 'rehype-components'; /* Render the custom directive content */
 import rehypeKatex from 'rehype-katex';
@@ -12,19 +16,14 @@ import remarkDirective from 'remark-directive'; /* Handle directives */
 import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives';
 import remarkMath from 'remark-math';
 import remarkSectionize from 'remark-sectionize';
+import { expressiveCodeConfig } from './src/config.ts';
+import { pluginCustomCopyButton } from './src/plugins/expressive-code/custom-copy-button.ts';
+import { pluginLanguageBadge } from './src/plugins/expressive-code/language-badge.ts';
 import { AdmonitionComponent } from './src/plugins/rehype-component-admonition.mjs';
 import { GithubCardComponent } from './src/plugins/rehype-component-github-card.mjs';
 import { parseDirectiveNode } from './src/plugins/remark-directive-rehype.js';
 import { remarkExcerpt } from './src/plugins/remark-excerpt.js';
 import { remarkReadingTime } from './src/plugins/remark-reading-time.mjs';
-import expressiveCode from 'astro-expressive-code';
-import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections';
-import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
-import { expressiveCodeConfig } from './src/config.ts';
-import { pluginLanguageBadge } from './src/plugins/expressive-code/language-badge.ts';
-import { pluginCustomCopyButton } from './src/plugins/expressive-code/custom-copy-button.ts';
-
-import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
@@ -48,6 +47,7 @@ export default defineConfig({
 			updateHead: true,
 			updateBodyClass: false,
 			globalInstance: true,
+			native: false,
 		}),
 		icon({
 			include: {

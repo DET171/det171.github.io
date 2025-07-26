@@ -1,6 +1,6 @@
+import { defineCollection, z } from 'astro:content';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const contentDir = (dir: string) =>
