@@ -2,7 +2,7 @@
 title: Institutional Power Is Not Inherent
 published: 2025-07-26
 description: Institutions depend heavily on the belief and cooperation of respectable individuals to maintain their power and legitimacy. 
-tags: []
+tags: [Law, Philosophy, Power, Politics]
 category: 'Ramblings'
 draft: false
 lang: 'en'
