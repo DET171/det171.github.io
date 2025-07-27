@@ -6,7 +6,3 @@ I'm a web developer amongst other things, and usually work with React, Svelte, A
 
 Some games I play are Honkai Star Rail and War Thunder, with one of my favourite games being Helldivers 2.
 I do follow CS Esports, and am a pretty big fan of m0NESY and NiKo (professional major choker).
-
-I'm also pretty proud of having contributed to Astro (it was a pretty minor bugfix but I use it as flexing rights on my friends sometimes).
-
-::github{repo="withastro/astro"}
