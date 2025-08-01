@@ -1,7 +1,7 @@
 ---
-title: Institutional Power Is Not Inherent
+title: The Illusion of Inherent Institutional Power
 published: 2025-07-26
-description: Institutions depend heavily on the belief and cooperation of respectable individuals to maintain their power and legitimacy. 
+description: A discussion of the foundations of institutional power, the fragility of symbolic and material authority, and the essential role of belief and cooperation in sustaining legitimacy.
 tags: [Law, Philosophy, Power, Politics]
 category: 'Ramblings'
 draft: false
