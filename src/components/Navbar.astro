@@ -158,16 +158,3 @@ let links: NavBarLink[] = navBarConfig.links.map(
 		});
 	}
 </script>
-
-<!-- {import.meta.env.PROD && <script is:inline define:vars={{scriptUrl: url('/pagefind/pagefind.js')}}>
-async function loadPagefind() {
-    const pagefind = await import(scriptUrl)
-    await pagefind.options({
-        'excerptLength': 20
-    })
-    pagefind.init()
-    window.pagefind = pagefind
-    pagefind.search('')     // speed up the first search
-}
-loadPagefind()
-</script>} -->

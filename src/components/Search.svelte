@@ -10,7 +10,6 @@ let keywordDesktop = '';
 let keywordMobile = '';
 let result: SearchResult[] = [];
 let isSearching = false;
-let pagefindLoaded = false;
 
 const fakeResult: SearchResult[] = [
 	{
@@ -54,6 +53,7 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 	}
 
 	isSearching = true;
+	const pagefindLoaded = typeof window !== 'undefined' && 'pagefind' in window;
 
 	try {
 		let searchResults: SearchResult[] = [];
@@ -79,10 +79,6 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 };
 
 onMount(async () => {
-	pagefindLoaded = typeof window !== 'undefined' && 'pagefind' in window;
-	console.log(typeof window !== 'undefined', 'pagefind' in window);
-	console.log('Pagefind loaded:', pagefindLoaded);
-
 	if (import.meta.env.DEV) {
 		console.log(
 			'Pagefind is not available in development mode. Using mock data.',
