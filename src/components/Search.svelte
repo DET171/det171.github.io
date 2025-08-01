@@ -80,6 +80,7 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 
 onMount(async () => {
 	pagefindLoaded = typeof window !== 'undefined' && 'pagefind' in window;
+	console.log('Pagefind loaded:', pagefindLoaded);
 
 	if (import.meta.env.DEV) {
 		console.log(
