@@ -1,8 +1,8 @@
 ---
 title: The Illusion of Inherent Institutional Power
 published: 2025-07-26
-description: A discussion of the foundations of institutional power, the fragility of symbolic and material authority, and the essential role of belief and cooperation in sustaining legitimacy.
-tags: [Law, Philosophy, Power, Politics]
+description: The power of institutions may undoubtedly seem inherent, but is a complex mix of belief, consent, and performance.
+tags: [Law, Politics]
 category: 'Ramblings'
 draft: false
 lang: 'en'
@@ -32,11 +32,7 @@ Ultimately, the strength of any institution lies not in the grandeur of its symb
 
 The myth of institutional permanence—that institutions are impervious to change, immune to decay—is precisely that: a myth. Institutions are not eternal structures set in stone; they are living, breathing entities, shaped by the interactions, choices, and beliefs of those who uphold them. When these beliefs fracture, when cooperation falters, the very foundation of power begins to crumble. We see this in history, time and again—in revolutions, in the slow disintegration of once-mighty regimes, in the moment when the facade of legitimacy shatters and the institution reveals itself to be nothing more than a hollow shell.
 
-It is a sobering reality: power, in the end, is never truly unassailable. Whether it is an institution built on symbols of sacred authority or one fortified by the mechanisms of coercion, it is only as strong as the faith and cooperation it commands. The moment that trust dissolves, or when coercive power fails to command allegiance, the institution's hold is lost.
-
-This recognition, while unsettling, also presents a vital opportunity for renewal. If institutions are only as strong as the belief in them, then they are always capable of transformation. A new vision, a restored commitment to justice, or a renewed respect for the legitimacy of authority—these can reforge institutions and restore their legitimacy. But such renewal requires more than the mere maintenance of tradition or the quiet acceptance of coercion. It demands a fundamental reconnection between the institution and the people it serves—an honest accounting of its failings, a commitment to moral and ethical action, and the courage to let go of the hollow trappings of power when they no longer resonate with the truth.
-
-In the end, institutional power is not an unyielding force to be wielded; it is a fragile and dynamic construct, dependent on the ongoing consent of the governed and the honour of those who hold it. When those foundations falter, so too does the power that once seemed unassailable. And when those foundations are rebuilt, with respect, justice, and accountability, power can once again be legitimate—not through coercion, but through the voluntary support of those who believe in it.
+It is a sobering reality: power, in the end, is never truly unassailable. Institutional power is not an unyielding force to be wielded; it is a fragile and dynamic construct, dependent on the ongoing consent of the governed and the honour of those who hold it. When those foundations falter, so too does the power that once seemed unassailable. And when those foundations are rebuilt, with respect, justice, and accountability, power can once again be legitimate—not through coercion, but through the voluntary support of those who believe in it.
 
 [^1]:  J. Jackson et al., “Why Do People Comply with the Law?: Legitimacy and the Influence of Legal Institutions,” British Journal of Criminology 52, no. 6 (July 9, 2012): 1051–71, [https://doi.org/10.1093/bjc/azs032](https://doi.org/10.1093/bjc/azs032).
 
