@@ -4,7 +4,6 @@ published: 2025-07-26
 description: The power of institutions may undoubtedly seem inherent, but is a complex mix of belief, consent, and performance.
 tags: [Law, Politics]
 category: 'Ramblings'
-draft: true
 lang: 'en'
 ---
 

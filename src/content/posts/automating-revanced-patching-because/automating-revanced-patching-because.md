@@ -5,7 +5,6 @@ description: 'Image unrelated'
 image: 'feixiao.jpg'
 tags: ['ReVanced', 'Automation']
 category: 'Programming'
-draft: true
 lang: en
 ---
 
