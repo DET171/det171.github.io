@@ -1,12 +1,8 @@
-# Devosfera Blog
+# My Blog
 
 Heavily customized version of the [AstroPaper](https://github.com/satnaing/astro-paper) theme with a **Terminal/Cyberpunk** aesthetic, image galleries, global search modal, and dozens of visual and interactive improvements.
 
-**🌐 Live demo:** [devosfera.vercel.app](https://devosfera.vercel.app)
-
-![Devosfera OG](public/devosfera-og.webp)
-
-> **Note:** This project is primarily my personal blog. If anyone wishes to use it, feel free to delete all entries and edit the settings freely.
+> **Note:** This is a fresh blog template ready for customization. Feel free to customize all settings and create your own content.
 
 ---
 
@@ -263,21 +259,21 @@ All site configuration lives in `src/config.ts` (the `SITE` constant):
 
 ```ts
 export const SITE = {
-  website: 'https://devosfera.vercel.app/',
-  author: 'Andrés',
-  desc: 'A space where curiosity turns into code',
-  title: 'Devosfera',
-  timezone: 'America/Guatemala', // default timezone for posts
-  showArchives: true,
-  showGalleries: true, // false → hides /galleries and the nav link
-  showBackButton: true,
-  dynamicOgImage: true,
-  introAudio: {
-    enabled: true, // show/hide the hero audio player
-    src: '/audio/intro-web.mp3', // path relative to /public
-    label: 'INTRO.MP3',
-    duration: 30, // seconds
-  },
+	website: 'https://devosfera.vercel.app/',
+	author: 'Andrés',
+	desc: 'A space where curiosity turns into code',
+	title: 'Devosfera',
+	timezone: 'America/Guatemala', // default timezone for posts
+	showArchives: true,
+	showGalleries: true, // false → hides /galleries and the nav link
+	showBackButton: true,
+	dynamicOgImage: true,
+	introAudio: {
+		enabled: true, // show/hide the hero audio player
+		src: '/audio/intro-web.mp3', // path relative to /public
+		label: 'INTRO.MP3',
+		duration: 30, // seconds
+	},
 };
 ```
 

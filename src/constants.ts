@@ -10,74 +10,74 @@ import IconPinterest from '@/assets/icons/IconPinterest.svg';
 import { SITE } from '@/config';
 
 interface Social {
-  name: string;
-  href: string;
-  linkTitle: string;
-  icon: (_props: Props) => Element;
+	name: string;
+	href: string;
+	linkTitle: string;
+	icon: (_props: Props) => Element;
 }
 
 export const SOCIALS: Social[] = [
-  {
-    name: 'GitHub',
-    href: 'https://github.com/0xdres/',
-    linkTitle: `${SITE.title} en GitHub`,
-    icon: IconGitHub,
-  },
-  {
-    name: 'X',
-    href: 'https://x.com/avdyen',
-    linkTitle: `${SITE.title} en X`,
-    icon: IconBrandX,
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/avdyan/',
-    linkTitle: `${SITE.title} en LinkedIn`,
-    icon: IconLinkedin,
-  },
-  {
-    name: 'Mail',
-    href: 'mailto:andres04u@gmail.com',
-    linkTitle: `Envia un correo a ${SITE.title}`,
-    icon: IconMail,
-  },
+	{
+		name: 'GitHub',
+		href: 'https://github.com/yourusername/',
+		linkTitle: `${SITE.title} on GitHub`,
+		icon: IconGitHub,
+	},
+	{
+		name: 'X',
+		href: 'https://x.com/yourusername',
+		linkTitle: `${SITE.title} on X`,
+		icon: IconBrandX,
+	},
+	{
+		name: 'LinkedIn',
+		href: 'https://www.linkedin.com/in/yourusername/',
+		linkTitle: `${SITE.title} on LinkedIn`,
+		icon: IconLinkedin,
+	},
+	{
+		name: 'Mail',
+		href: 'mailto:your.email@example.com',
+		linkTitle: `Send an email to ${SITE.title}`,
+		icon: IconMail,
+	},
 ] as const;
 
 export const SHARE_LINKS: Social[] = [
-  {
-    name: 'WhatsApp',
-    href: 'https://wa.me/?text=',
-    linkTitle: `Envia este post por WhatsApp`,
-    icon: IconWhatsapp,
-  },
-  {
-    name: 'Facebook',
-    href: 'https://www.facebook.com/sharer.php?u=',
-    linkTitle: `Comparte este post en Facebook`,
-    icon: IconFacebook,
-  },
-  {
-    name: 'X',
-    href: 'https://x.com/intent/post?url=',
-    linkTitle: `Comparte este post en X`,
-    icon: IconBrandX,
-  },
-  {
-    name: 'Telegram',
-    href: 'https://t.me/share/url?url=',
-    linkTitle: `Comparte este post por Telegram`,
-    icon: IconTelegram,
-  },
-  {
-    name: 'Pinterest',
-    href: 'https://pinterest.com/pin/create/button/?url=',
-    linkTitle: `Comparte este post en Pinterest`,
-    icon: IconPinterest,
-  },
-  {
-    name: 'Mail',
-    href: 'mailto:?subject=See%20this%20post&body=',
-    linkTitle: `Envia este post por correo`,
-    icon: IconMail,
-  },
+	{
+		name: 'WhatsApp',
+		href: 'https://wa.me/?text=',
+		linkTitle: `Share this post on WhatsApp`,
+		icon: IconWhatsapp,
+	},
+	{
+		name: 'Facebook',
+		href: 'https://www.facebook.com/sharer.php?u=',
+		linkTitle: `Share this post on Facebook`,
+		icon: IconFacebook,
+	},
+	{
+		name: 'X',
+		href: 'https://x.com/intent/post?url=',
+		linkTitle: `Share this post on X`,
+		icon: IconBrandX,
+	},
+	{
+		name: 'Telegram',
+		href: 'https://t.me/share/url?url=',
+		linkTitle: `Share this post on Telegram`,
+		icon: IconTelegram,
+	},
+	{
+		name: 'Pinterest',
+		href: 'https://pinterest.com/pin/create/button/?url=',
+		linkTitle: `Share this post on Pinterest`,
+		icon: IconPinterest,
+	},
+	{
+		name: 'Mail',
+		href: 'mailto:?subject=See%20this%20post&body=',
+		linkTitle: `Send this post by email`,
+		icon: IconMail,
+	},
 ] as const;

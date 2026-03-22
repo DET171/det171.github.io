@@ -8,14 +8,14 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 const postFilter = ({ data }: CollectionEntry<'blog'>) => {
-  const pubDatetime = dayjs(data.pubDatetime).tz(
-    data.timezone || SITE.timezone,
-  );
+	const pubDatetime = dayjs(data.pubDatetime).tz(
+		data.timezone || SITE.timezone,
+	);
 
-  const isPublishTimePassed =
-    dayjs().tz(SITE.timezone).valueOf() >
-    pubDatetime.valueOf() - SITE.scheduledPostMargin;
-  return !data.draft && (import.meta.env.DEV || isPublishTimePassed);
+	const isPublishTimePassed =
+		dayjs().tz(SITE.timezone).valueOf() >
+		pubDatetime.valueOf() - SITE.scheduledPostMargin;
+	return !data.draft && (import.meta.env.DEV || isPublishTimePassed);
 };
 
 export default postFilter;

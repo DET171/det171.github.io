@@ -3,28 +3,22 @@ layout: ../layouts/AboutLayout.astro
 title: 'About'
 ---
 
-Bienvenido a mi rincón digital. Soy un **desarrollador** y **estudiante** apasionado por la tecnología, los videojuegos y construir cosas que vivan en internet.
+Welcome to my blog! This is a space where I share my thoughts, projects, and learnings.
 
-## ¿Quién soy?
+## Who am I?
 
-Me llamo Andrés, y desde que recuerdo siempre tuve curiosidad por entender cómo funcionan las cosas — desde desarmar juguetes de niño hasta desarmar código ajeno a las 2 AM. Actualmente estudio ingeniería mientras desarrollo proyectos que me retan a aprender algo nuevo cada día.
+I'm a developer passionate about technology and building things on the web. This blog is my digital space to document my journey, share what I learn, and connect with others.
 
-Cuando no estoy programando, probablemente estoy en algún mundo virtual explorando mapas, completando misiones o compitiendo online. Los videojuegos no solo son mi hobby, también me enseñaron a resolver problemas, trabajar en equipo y, sobre todo, a no rendirme después del intento #847.
+## What I do
 
-## Lo que hago
+- **Web Development** — I build modern web experiences using the latest technologies
+- **Learning** — Always exploring new tools, frameworks, and concepts
+- **Sharing** — Writing about what I discover along the way
 
-- **Desarrollo web** — Me encanta construir experiencias web modernas con tecnologías como Astro, React, TypeScript y todo lo que el ecosistema JavaScript tiene para ofrecer.
-- **Open Source** — Creo en el poder del código abierto. Puedes encontrar mis proyectos en [GitHub](https://github.com/0xdres/).
-- **Aprendizaje continuo** — Siempre estoy explorando nuevas herramientas, frameworks y conceptos. La tecnología evoluciona rápido y me gusta ir al ritmo.
+## This blog
 
-## Gaming
+This blog was created to document my development journey and share knowledge with the community. You'll find posts about web development, technology, and various projects I'm working on.
 
-Los videojuegos son parte de mi ADN. Desde RPGs épicos hasta shooters competitivos, disfruto prácticamente cualquier género. Es ese espacio donde la creatividad se encuentra con la estrategia y la diversión pura.
+Feel free to reach out and connect!
 
-## Este blog
-
-**Devosfera** nació como un espacio para documentar mi viaje como desarrollador, compartir lo que aprendo y conectar con personas que comparten las mismas pasiones. Aquí encontrarás posts sobre desarrollo, tecnología, y alguna que otra reflexión random de madrugada.
-
-Si quieres conectar, no dudes en encontrarme en [GitHub](https://github.com/0xdres/), [X](https://x.com/avdyen) o [LinkedIn](https://www.linkedin.com/in/avdyan/). Siempre es bueno conocer gente cool de la comunidad.
-
-> _"El código es poesía, pero con más puntos y comas."_ — Yo, probablemente
+> _"Code is poetry with semicolons."_

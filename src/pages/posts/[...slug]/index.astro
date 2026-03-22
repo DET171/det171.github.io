@@ -5,17 +5,17 @@ import getSortedPosts from '@/utils/getSortedPosts';
 import { getPath } from '@/utils/getPath';
 
 type Props = {
-  post: CollectionEntry<'blog'>;
+	post: CollectionEntry<'blog'>;
 };
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
-  const postResult = posts.map(post => ({
-    params: { slug: getPath(post.id, post.filePath, false) },
-    props: { post },
-  }));
+	const posts = await getCollection('blog', ({ data }) => !data.draft);
+	const postResult = posts.map(post => ({
+		params: { slug: getPath(post.id, post.filePath, false) },
+		props: { post },
+	}));
 
-  return postResult;
+	return postResult;
 }
 
 const { post } = Astro.props;
