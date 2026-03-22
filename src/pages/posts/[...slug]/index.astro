@@ -8,8 +8,15 @@ type Props = {
 	post: CollectionEntry<'blog'>;
 };
 
+// console.log(
+// 	`Generating static paths for blog posts in ${isProd ? 'production' : 'development'} mode...`,
+// );
+
 export async function getStaticPaths() {
-	const posts = await getCollection('blog', ({ data }) => !data.draft);
+	const posts = await getCollection('blog', ({ data }) => {
+		return import.meta.env.PROD ? data.draft !== true : true;
+	});
+
 	const postResult = posts.map(post => ({
 		params: { slug: getPath(post.id, post.filePath, false) },
 		props: { post },

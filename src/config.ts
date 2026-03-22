@@ -4,7 +4,7 @@ export const SITE = {
 	profile: 'https://github.com/DET171',
 	desc: 'A personal blog about programming, technology, and other random stuff.',
 	title: 'Xenora',
-	// ogImage: 'og-image.webp', // located in the public folder
+	ogImage: 'xenora-og.png', // located in the public folder
 	lightAndDarkMode: true,
 	postPerIndex: 6,
 	postPerPage: 8,

@@ -9,7 +9,9 @@ import getUniqueTags from '@/utils/getUniqueTags';
 import getPostsByTag from '@/utils/getPostsByTag';
 import { SITE } from '@/config';
 
-const posts = await getCollection('blog');
+const posts = await getCollection('blog', ({ data }) => {
+	return import.meta.env.PROD ? data.draft !== true : true;
+});
 
 const tags = getUniqueTags(posts);
 const tagsWithCount = tags.map(({ tag, tagName }) => ({
