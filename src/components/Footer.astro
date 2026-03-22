@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'astro/types';
 import { SOCIALS } from '@/constants';
 import LinkButton from './LinkButton.astro';
 import { SITE } from '@/config';
-import Logo from '@/assets/logo/devosfera.svg';
+import Logo from '@/assets/logo/xenora.svg';
 
 const currentYear = new Date().getFullYear();
 
@@ -42,7 +42,7 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
 				<p
 					class='max-w-xs text-center font-cartograph text-[11px] leading-relaxed tracking-wide text-foreground/40 sm:text-start'
 				>
-					A space where curiosity turns into code.
+					Life of a Goofy Goober
 				</p>
 			</div>
 
@@ -82,10 +82,10 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
 		>
 			<p class='font-cartograph text-[11px] tracking-wide opacity-35'>
 				&copy; {currentYear}
-				{SITE.title}. All rights reserved.
+				{SITE.author}. All rights reserved.
 			</p>
 			<p class='font-cartograph text-[11px] tracking-wide opacity-30'>
-				Made with <span class='text-accent'>&#9829;</span> and lots of coffee
+				Made with caffeine and Astro.
 			</p>
 		</div>
 	</div>

@@ -248,7 +248,6 @@ import '@pagefind/default-ui/css/ui.css';
 				// Ensure Pagefind UI does not re-initialize on the same element
 				if (container.querySelector('.pagefind-ui')) return;
 
-				// @ts-expect-error — Missing types for @pagefind/default-ui package.
 				const { PagefindUI } = await import('@pagefind/default-ui');
 
 				// Navigation may have occurred while the module was loading (first load, uncached)

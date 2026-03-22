@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 250" xmlns:bx="https://boxy-svg.com">
+  <g transform="matrix(1.112155, 0, 0, 1.112155, 12.50231, -14.050506)" id="object-0">
+    <!-- Xen part -->
+    <!-- <text class="logo-text-left" style="fill: rgb(51, 51, 51); font-family: var(--font-cascadia-code), 'Cascadia Code', monospace; font-size: 150px; font-weight: 600; white-space: pre;" x="0" y="176.957">Xen</text> -->
+
+    <!-- Terminal bracket symbol [>] -->
+    <text class="logo-bracket" style="fill: rgb(147, 51, 207); font-family: var(--font-cascadia-code), 'Cascadia Code', monospace; font-size: 150px; font-weight: 700; letter-spacing: -20px; paint-order: stroke; white-space: pre;" x="0" y="176.957">[&gt;]</text>
+
+    <!-- ora part (same baseline as Xen) -->
+    <text class="logo-text-right" style="fill: rgb(51, 51, 51); font-family: var(--font-cascadia-code), 'Cascadia Code', monospace; font-size: 150px; font-weight: 600; white-space: pre;" x="220" y="176.957">Xenora</text>
+  </g>
+  <defs>
+    <bx:export>
+      <bx:file format="svg" href="#object-0" path="xenora.svg"/>
+    </bx:export>
+  </defs>
+</svg>

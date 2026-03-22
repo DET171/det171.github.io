@@ -3,22 +3,18 @@ layout: ../layouts/AboutLayout.astro
 title: 'About'
 ---
 
-Welcome to my blog! This is a space where I share my thoughts, projects, and learnings.
+## `$ whoami`
 
-## Who am I?
+I'm Canaris, a full-stack web developer with a passion for programming, configuring borderline useless tools, and gaming, and I also dabble in topics relating to civil liberties from time to time.
 
-I'm a developer passionate about technology and building things on the web. This blog is my digital space to document my journey, share what I learn, and connect with others.
+## `$ ls -la ./stack`
 
-## What I do
+I work with modern web technologies, always exploring new tools and frameworks. The digital landscape evolves rapidly, and I enjoy diving deep into both the fundamentals and the bleeding edge.
 
-- **Web Development** — I build modern web experiences using the latest technologies
-- **Learning** — Always exploring new tools, frameworks, and concepts
-- **Sharing** — Writing about what I discover along the way
+> _The right to be let alone is indeed the beginning of all freedom._
 
-## This blog
+---
 
-This blog was created to document my development journey and share knowledge with the community. You'll find posts about web development, technology, and various projects I'm working on.
+Feel free to reach out through any of the channels below. Always happy to connect with fellow travelers in the digital realm.
 
-Feel free to reach out and connect!
-
-> _"Code is poetry with semicolons."_
+`$ exit`

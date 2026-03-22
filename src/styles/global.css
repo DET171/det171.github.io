@@ -146,7 +146,7 @@ i {
 }
 
 .premium-search .pagefind-ui__result {
-	padding: 1.25rem;
+	padding: 1.25rem !important;
 	border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
 	border-radius: 1rem;
 	background: color-mix(in srgb, var(--foreground) 2%, var(--background));
