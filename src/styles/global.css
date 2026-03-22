@@ -172,6 +172,10 @@ i {
 	color: var(--accent);
 }
 
+.premium-search .pagefind-ui__result-inner {
+	margin-top: 0 !important;
+}
+
 .premium-search .pagefind-ui__result-excerpt {
 	opacity: 0.7;
 	font-size: 0.9rem;
