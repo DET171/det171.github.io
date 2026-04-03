@@ -32,7 +32,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 			<div class='relative z-10'>
 				<!-- Terminal prompt badge -->
 				<div
-					class='mb-3 inline-flex items-center gap-2 rounded-full border border-border/40 bg-muted/20 px-3.5 py-1.5 font-cartograph text-xs sm:text-sm'
+					class='mb-3 inline-flex items-center gap-2 rounded-full border border-border/40 bg-muted/20 px-3.5 py-1.5 font-mono text-xs sm:text-sm'
 				>
 					<span class='relative flex h-2 w-2'>
 						<span
@@ -69,7 +69,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
 				<!-- Pronunciation guide -->
 				<p
-					class='font-cartograph text-sm tracking-wide text-foreground/40'
+					class='font-mono text-sm tracking-wide text-foreground/40'
 					aria-label='Pronunciation guide'
 				>
 					/zeˈnɔːrə/ <span class='opacity-60'>·</span>
@@ -157,7 +157,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 							Recent Posts
 						</h2>
 						<div class='h-px flex-1 bg-border/20' />
-						<span class='font-cartograph text-xs text-accent/40 select-none'>
+						<span class='font-mono text-xs text-accent/40 select-none'>
 							[{recentPosts.slice(0, SITE.postPerIndex).length}/
 							{recentPosts.length}]
 						</span>

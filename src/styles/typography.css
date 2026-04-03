@@ -88,7 +88,7 @@
 		}
 
 		code {
-			@apply rounded-md bg-muted/15 px-1.5 py-0.5 font-cartograph text-sm wrap-break-word text-foreground shadow-sm shadow-black/5 before:content-none after:content-none;
+			@apply rounded-md bg-muted/15 px-1.5 py-0.5 font-mono text-sm wrap-break-word text-foreground shadow-sm shadow-black/5 before:content-none after:content-none;
 		}
 
 		.astro-code code {
@@ -109,7 +109,7 @@
 		}
 
 		summary {
-			@apply flex list-none items-center gap-2 px-4 py-3 font-cartograph text-sm font-medium tracking-wide text-foreground transition-colors duration-200 hover:text-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent focus-visible:outline-dashed;
+			@apply flex list-none items-center gap-2 px-4 py-3 font-mono text-sm font-medium tracking-wide text-foreground transition-colors duration-200 hover:text-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent focus-visible:outline-dashed;
 		}
 
 		summary:hover::before,
@@ -186,7 +186,7 @@
 		}
 
 		details > ul li a {
-			@apply relative inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-cartograph text-[13px] text-foreground/85 no-underline transition-all duration-200 hover:bg-accent/8 hover:text-accent hover:no-underline;
+			@apply relative inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-mono text-[13px] text-foreground/85 no-underline transition-all duration-200 hover:bg-accent/8 hover:text-accent hover:no-underline;
 			background-image: none !important;
 		}
 
@@ -233,7 +233,7 @@
 	/* ===== Code Blocks & Syntax Highlighting ===== */
 	.astro-code,
 	code {
-		@apply font-cartograph;
+		@apply font-mono;
 	}
 
 	.astro-code {

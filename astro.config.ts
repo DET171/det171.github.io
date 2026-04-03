@@ -88,18 +88,24 @@ export default defineConfig({
 				],
 			},
 		},
+		// {
+		// 	name: 'Cartograph CF',
+		// 	cssVariable: '--font-mono',
+		// 	fallbacks: ['monospace'],
+		// 	provider: fontProviders.local(),
+		// 	options: {
+		// 		variants: [
+		// 			{
+		// 				src: ['./src/assets/fonts/cartograph-cf.woff2'],
+		// 			},
+		// 		],
+		// 	},
+		// },
 		{
-			name: 'Cartograph CF',
-			cssVariable: '--font-cartograph',
+			name: 'Geist Mono',
+			cssVariable: '--font-mono',
 			fallbacks: ['monospace'],
-			provider: fontProviders.local(),
-			options: {
-				variants: [
-					{
-						src: ['./src/assets/fonts/cartograph-cf.woff2'],
-					},
-				],
-			},
+			provider: fontProviders.bunny(),
 		},
 		{
 			name: 'Cascadia Code',

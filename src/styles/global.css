@@ -23,7 +23,7 @@ html[data-theme='dark'] {
 @theme inline {
 	--font-app: var(--font-wotfard);
 	--font-sriracha: var(--font-sriracha);
-	--font-cartograph: var(--font-cartograph);
+	--font-mono: var(--font-mono);
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--color-accent: var(--accent);
