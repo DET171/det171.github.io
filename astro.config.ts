@@ -2,6 +2,7 @@ import { defineConfig, envField, fontProviders } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 import remarkToc from 'remark-toc';
 import remarkCollapse from 'remark-collapse';
 import {
@@ -27,7 +28,13 @@ export default defineConfig({
 		rustCompiler: true,
 	},
 	markdown: {
-		remarkPlugins: [remarkToc, [remarkCollapse, { test: 'Table of contents' }]],
+		// remarkPlugins: [remarkToc, [remarkCollapse, { test: 'Table of contents' }]],
+		processor: unified({
+			remarkPlugins: [
+				remarkToc,
+				[remarkCollapse, { test: 'Table of contents' }],
+			],
+		}),
 		shikiConfig: {
 			// For more themes, visit https://shiki.style/themes
 			themes: { light: 'catppuccin-latte', dark: 'andromeeda' },
@@ -101,11 +108,41 @@ export default defineConfig({
 		// 		],
 		// 	},
 		// },
+		// {
+		// 	name: 'Geist Mono',
+		// 	cssVariable: '--font-mono',
+		// 	fallbacks: ['monospace'],
+		// 	provider: fontProviders.bunny(),
+		// },
 		{
-			name: 'Geist Mono',
+			name: 'Geist Mono Nerd Font',
 			cssVariable: '--font-mono',
 			fallbacks: ['monospace'],
-			provider: fontProviders.bunny(),
+			provider: fontProviders.local(),
+			options: {
+				variants: [
+					{
+						weight: 300,
+						style: 'normal',
+						src: ['./src/assets/fonts/GeistMonoNerdFont-Light.woff2'],
+					},
+					{
+						weight: 400,
+						style: 'normal',
+						src: ['./src/assets/fonts/GeistMonoNerdFont-Regular.woff2'],
+					},
+					{
+						weight: 500,
+						style: 'normal',
+						src: ['./src/assets/fonts/GeistMonoNerdFont-Medium.woff2'],
+					},
+					{
+						weight: 700,
+						style: 'normal',
+						src: ['./src/assets/fonts/GeistMonoNerdFont-Bold.woff2'],
+					},
+				],
+			},
 		},
 		{
 			name: 'Cascadia Code',
