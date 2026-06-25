@@ -1,0 +1,324 @@
+---
+title: 'SCTF 7.0 Finals Writeup'
+pubDatetime: 2026-06-25
+description: 'Some writeup(s) for SCTF 7.0 Finals'
+tags: ['ctf', 'writeup', 'sctf']
+featured: true
+draft: false
+---
+import { Image } from 'astro:assets';
+import NikoTrophy from './NiKo_1920x1200.jpg';
+
+# SCTF 7.0 Finals Writeup
+
+Was not exactly terrible given how close I was to the NiKo table smash.
+
+![](https://media1.tenor.com/m/a49CPS-25WYAAAAC/niko-niko-smashes-table.gif)
+
+## csgo (Forens)
+
+The challenge provides us with the following description:
+
+> John wants to play csgo on his shiny new arch (btw) system! however, as all good cs players do, he wants to have stretched res, which cs doesnt support natively :( john tried to fix this, but the plugin he has is broken! help john be able to play cs again!
+
+[dist (link may no longer work)](https://drive.google.com/file/d/1S_fsNskVkwRljQMt1UcmGJZ0qwaMNYte/view?usp=sharing) [^1]
+
+We are provided with a single `dist.E01` file:
+
+```bash
+~/ctf/csgo ⌚ 14:50:41
+$ ls
+Permissions Size User    Date Modified Name
+.rwxr-xr-x  6.9G canaris 25 Jun 12:20   dist.E01
+
+~/ctf/csgo ⌚ 14:50:42
+$ file dist.E01
+dist.E01: EWF/Expert Witness/EnCase image file format
+```
+
+Mounting it, we see the main Linux partition:
+
+```bash
+~/ctf/csgo ⌚ 14:52:27
+$ mkdir -p mount && ewfmount dist.E01 mount/
+ewfmount 20140816
+
+
+~/ctf/csgo ⌚ 14:52:34
+$ ls mount
+Permissions Size User    Date Modified Name
+.r--r--r--   34G canaris 25 Jun 14:52  󰡯 ewf1
+
+~/ctf/csgo ⌚ 14:52:59
+$ mmls mount/ewf1
+DOS Partition Table
+Offset Sector: 0
+Units are in 512-byte sectors
+
+      Slot      Start        End          Length       Description
+000:  Meta      0000000000   0000000000   0000000001   Primary Table (#0)
+001:  -------   0000000000   0000002047   0000002048   Unallocated
+002:  000:000   0000002048   0002099199   0002097152   Win95 FAT32 (0x0b)
+003:  000:001   0002099200   0067108830   0065009631   Linux (0x83)
+004:  -------   0067108831   0067108863   0000000033   Unallocated
+```
+
+Running `fls` on the Linux partition returns `Cannot determine file system type`, which indicates that it might be a `btrfs` filesystem since `archinstall` recommends `brtfs` and The Sleuth Kit utilities have limited support for it. We can use `dd` to extract the partition:
+
+```bash 
+~/ctf/csgo ⌚ 15:04:59
+$ dd if=mount/ewf1 of=linux.img bs=512 skip=2099200 count=65009631 status=progress
+...
+```
+
+It indeed is a `btrfs` partition:
+
+```bash
+~/ctf/csgo ⌚ 15:08:38
+$ file linux.img
+linux.img: BTRFS Filesystem sectorsize 4096, nodesize 16384, leafsize 16384, UUID=3cc412be-31a4-48ba-98cf-91af977ec7df, 4356390912/33284927488 bytes used, 1 devices
+```
+
+We can now mount it after unmounting the `ewf` image (with `umount ./mount`):
+
+```bash
+~/ctf/csgo ⌚ 15:09:47
+$ sudo mount -o loop linux.img mount
+
+~/ctf/csgo ⌚ 15:09:52
+$ ls mount
+Permissions Size User Date Modified Name
+drwxr-xr-x     - root 22 Jun 00:22   @
+drwxr-xr-x     - root 22 Jun 00:35   @home
+drwxr-xr-x     - root 22 Jun 00:24   @log
+drwxr-xr-x     - root 22 Jun 18:01   @pkg
+```
+
+These folders are [subvolumes](https://wiki.archlinux.org/title/Btrfs#Subvolumes), and `@home` and `@` here presumably contain the user and root filesystems, respectively.
+
+Looking in `@home`, we find a `bob` user directory:
+
+```bash
+~/ctf/csgo ⌚ 15:14:19
+$ ls mount/@home
+Permissions Size User    Date Modified Name
+drwx------     - canaris 22 Jun 22:34   bob
+
+~/ctf/csgo ⌚ 15:14:42
+$ ls mount/@home/bob
+Permissions Size User    Date Modified Name
+.rw-------    86 canaris 22 Jun 22:40  󱆃 .bash_history
+.rw-r--r--    21 canaris 10 Jun 12:32  󱆃 .bash_logout
+.rw-r--r--    57 canaris 10 Jun 12:32  󱆃 .bash_profile
+.rw-r--r--   172 canaris 10 Jun 12:32  󱆃 .bashrc
+drwxr-xr-x     - canaris 22 Jun 18:00   .cache
+drwxr-xr-x     - canaris 22 Jun 21:59   .config
+.rw-r--r--    59 canaris 22 Jun 22:34  󰊢 .gitconfig
+drwx------     - canaris 22 Jun 16:52   .gnupg
+drwxr-xr-x     - canaris 22 Jun 17:42   .local
+drwxr-xr-x     - canaris 22 Jun 18:00   dots-hyprland
+drwxr-xr-x     - canaris 22 Jun 17:43   ii-original-dots-backup
+```
+
+Bob is likely a hyprland user, given the presence of the `dots-hyprland` folder (which a search reveals to just be a collection of dotfiles from GitHub). Looking in `.config`, we find a `hypr` folder, which contains a `hyprland.lua` file:
+
+```bash
+~/ctf/csgo ⌚ 15:16:55
+$ ls mount/@home/bob/.config/hypr
+Permissions Size User    Date Modified Name
+drwxr-xr-x     - canaris 22 Jun 17:51   custom
+.rw-r--r--   718 canaris 22 Jun 17:43   hypridle.conf
+drwxr-xr-x     - canaris 22 Jun 16:41   hyprland
+.rw-r--r--  1.2k canaris 22 Jun 17:43   hyprland.lua
+.rw-r--r--  1.9k canaris 22 Jun 17:43   hyprlock.conf
+```
+
+Looking in `hyprland.lua`, we find:
+
+```lua
+-- This file sources other files in `hyprland` and `custom` folders
+-- You wanna add your stuff in files in `custom`
+
+-- Internal stuff --
+require("hyprland.lib")
+require("hyprland.services")
+
+-- ...
+```
+
+We are then directed to the `custom` folder, which contains:
+
+```bash
+~/ctf/csgo ⌚ 15:17:51
+$ ls mount/@home/bob/.config/hypr/custom
+Permissions Size User    Date Modified Name
+.rw-r--r--     1 canaris 22 Jun 16:41   env.lua
+.rw-r--r--   145 canaris 22 Jun 17:51   execs.lua
+.rw-r--r--   351 canaris 22 Jun 17:51   general.lua
+.rw-r--r--   135 canaris 22 Jun 16:41   keybinds.lua
+.rw-r--r--     1 canaris 22 Jun 16:41   rules.lua
+drwxr-xr-x     - canaris 22 Jun 16:41   scripts
+.rw-r--r--     1 canaris 22 Jun 16:41   variables.lua
+```
+
+Run a `grep`:
+
+```bash
+~/ctf/csgo ⌚ 15:20:27
+$ grep -r "csgo" ./mount/@home/bob/.config/hypr/custom
+./mount/@home/bob/.config/hypr/custom/general.lua:-- Configure csgo-vulkan-fix after hyprpm has loaded the plugin.
+./mount/@home/bob/.config/hypr/custom/general.lua:if hl.plugin.csgo_vulkan_fix ~= nil then
+./mount/@home/bob/.config/hypr/custom/general.lua:            csgo_vulkan_fix = {
+./mount/@home/bob/.config/hypr/custom/general.lua:    hl.plugin.csgo_vulkan_fix.vkfix_app({
+```
+
+The first line points us to `hyprpm`, which is the plugin manager packaged with `hyprland`, and we can safely assume that our friend Bob here has used it to install the `csgo-vulkan-fix` plugin. Searching `csgo_vulkan_fix` does indeed reveal that it is a valid plugin, and we find no additional leads here after sniffing around for a bit.
+
+The challenge description does mention something regarding a "plugin" being "broken" and "john tr[ying] to fix [it]", and we are thus led to believe that bob/john/aiden/whatever has modified or updated the plugin in some form or manner at some point.
+
+We now shift our attention to the `@` subvolume:
+
+```bash
+~/ctf/csgo ⌚ 17:14:52
+$ ls mount/@/
+Permissions Size User Date Modified Name
+lrwxrwxrwx     - root 13 Oct  2025   bin -> usr/bin
+drwxr-xr-x     - root 22 Jun 00:21   boot
+dr-xr-xr-x     - root 22 Jun 00:21   dev
+drwxr-xr-x     - root 22 Jun 21:33   etc
+drwxr-xr-x     - root 22 Jun 00:21  󱂵 home
+lrwxrwxrwx     - root 13 Oct  2025   lib -> usr/lib
+lrwxrwxrwx     - root 13 Oct  2025   lib64 -> usr/lib
+drwxr-xr-x     - root 13 Oct  2025   mnt
+drwxr-xr-x     - root 22 Jun 17:30   opt
+dr-xr-xr-x     - root 22 Jun 00:21   proc
+drwxr-x---     - root 22 Jun 00:24   root
+dr-xr-xr-x     - root 22 Jun 00:21   run
+lrwxrwxrwx     - root 13 Oct  2025   sbin -> usr/bin
+drwxr-xr-x     - root 22 Jun 00:22   srv
+dr-xr-xr-x     - root 22 Jun 00:21   sys
+drwxrwxrwt     - root 22 Jun 00:21   tmp
+drwxr-xr-x     - root 22 Jun 17:42   usr
+drwxr-xr-x     - root 22 Jun 17:01   var
+```
+
+Run a find for files related to `csgo`:
+
+```bash
+~/ctf/csgo ⌚ 17:15:48
+$ sudo find mount/@ -iname '*csgo*'
+mount/@/var/cache/hyprpm/bob/hyprland-plugins/csgo-vulkan-fix.so
+mount/@/var/lib/systemd/coredump/core.csgo-vulkan-fix.1000.6827e932e47644329886fc06e3c3af19.140719.1782138823000000.zst
+```
+
+The first result is the plugin in the `hyprpm` cache, so we `cd` into there to take a further look:
+
+```bash
+~/ctf/csgo ⌚ 17:16:23
+$ cd mount/@/var/cache/hyprpm/bob/hyprland-plugins/
+
+~/ctf/csgo/mount/@/var/cache/hyprpm/bob/hyprland-plugins ⌚ 17:17:28
+$ ls
+Permissions Size User Date Modified Name
+drwxr-xr-x     - root 22 Jun 22:35   .git
+.rwxr-xr-x  260k root 22 Jun 17:49   borders-plus-plus.so
+.rwxr-xr-x  192k root 22 Jun 22:34   csgo-vulkan-fix.so
+.rwxr-xr-x  481k root 22 Jun 17:49   hyprbars.so
+.rwxr-xr-x   92k root 22 Jun 17:49   hyprfocus.so
+.rw-r--r--   471 root 22 Jun 17:49   state.toml
+```
+
+The `.so` itself does not seem to be particularly interesting:
+
+```bash
+~/ctf/csgo/mount/@/var/cache/hyprpm/bob/hyprland-plugins ⌚ 17:17:29
+$ file csgo-vulkan-fix.so
+csgo-vulkan-fix.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=2b7633c9ec0b53e6b8a8eed8c6a9f786be33d0fe, not stripped
+```
+
+The folder, however, is a `git` repository, so we check the commit history:
+
+```bash
+~/ctf/csgo/mount/@/var/cache/hyprpm/bob/hyprland-plugins on  main ⌚ 17:19:46
+$ git -P log
+commit 385737ebac952372f517bda885e8f1d41365e6fd (HEAD -> main)
+Author: bob <bob@arch.local>
+Date:   Mon Jun 22 14:34:06 2026 +0000
+
+    fix
+
+commit 58e2d27f4c21e58c7c7f35ac264be57f581f2af3
+Author: bob <bob@arch.local>
+Date:   Mon Jun 22 14:34:06 2026 +0000
+
+    initial commit
+
+```
+
+Oh look, a "fix"! Let's take a further look:
+
+```bash
+~/ctf/csgo/mount/@/var/cache/hyprpm/bob/hyprland-plugins on  main ⌚ 17:22:20
+$ git -P log --stat
+commit 385737ebac952372f517bda885e8f1d41365e6fd (HEAD -> main)
+Author: bob <bob@arch.local>
+Date:   Mon Jun 22 14:34:06 2026 +0000
+
+    fix
+
+ csgo-vulkan-fix.so | Bin 15952 -> 191824 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 58e2d27f4c21e58c7c7f35ac264be57f581f2af3
+Author: bob <bob@arch.local>
+Date:   Mon Jun 22 14:34:06 2026 +0000
+
+    initial commit
+
+ borders-plus-plus.so | Bin 0 -> 259792 bytes
+ csgo-vulkan-fix.so   | Bin 0 -> 15952 bytes
+ hyprbars.so          | Bin 0 -> 480824 bytes
+ hyprfocus.so         | Bin 0 -> 92168 bytes
+ state.toml           |  26 ++++++++++++++++++++++++++
+ 5 files changed, 26 insertions(+)
+```
+
+A rather... substantial difference. Extract the old plugin:
+
+```bash
+~/ctf/csgo/mount/@/var/cache/hyprpm/bob/hyprland-plugins on  main ⌚ 17:25:11
+$ git show 58e2d27f4c21e58c7c7f35ac264be57f581f2af3:csgo-vulkan-fix.so | sudo tee old.so > /dev/null
+```
+
+Check the `old.so`:
+
+```bash
+~/ctf/csgo/mount/@/var/cache/hyprpm/bob/hyprland-plugins on  main! ⌚ 17:26:50
+$ file old.so
+old.so: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=ae3b5b26fd68ada180c3d724003200b09a255c25, for GNU/Linux 3.2.0, not stripped
+```
+
+Run the executable (generally bad practice but whatever):
+
+```bash
+~/ctf/csgo/mount/@/var/cache/hyprpm/bob/hyprland-plugins on  main! ⌚ 17:28:18
+$ sudo chmod +x old.so && ./old.so
+73 63 74 66 7b 77 33 5f 77 33 72 65 5f 62 33 68 69 6e 64 5f 35 69 35 34 33 33 6e 5f 35 5f 6f 6e 5f 6e 75 6b 33 7d 0a %  
+```
+
+Decode the hex:
+
+```bash
+~/ctf/csgo/mount/@/var/cache/hyprpm/bob/hyprland-plugins on  main! ⌚ 17:28:21
+$ echo '73 63 74 66 7b 77 33 5f 77 33 72 65 5f 62 33 68 69 6e 64 5f 35 69 35 34 33 33 6e 5f 35 5f 6f 6e 5f 6e 75 6b 33 7d 0a' | xxd -r -p
+sctf{w3_w3re_b3hind_5i5433n_5_on_nuk3}
+```
+
+That's it! The flag is `sctf{w3_w3re_b3hind_5i5433n_5_on_nuk3}`.
+
+In honour of the NiKo major win:
+
+<Image src={NikoTrophy} alt="NiKo Smashes Table" width={572} height={400} />
+
+
+[^1]: Download files from the internet at your own risk
