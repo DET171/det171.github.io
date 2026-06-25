@@ -1,13 +1,13 @@
 ---
-title: 'SCTF 7.0 Writeup'
+title: 'SCTF 7.0 Quals Writeup'
 pubDatetime: 2026-06-20
-description: 'One (1) singular writeup for SCTF 7.0'
+description: 'One (1) singular writeup for SCTF 7.0 Quals'
 tags: ['ctf', 'writeup', 'sctf']
 featured: true
 draft: false
 ---
 
-# SCTF 7.0 Writeup
+# SCTF 7.0 Quals Writeup
 
 This page contains, at the moment, just one writeup for a challenge from SCTF 7.0. I might add more in the future depending on how I feel.
 
