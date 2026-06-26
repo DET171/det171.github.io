@@ -38,7 +38,6 @@ export default async post => {
 						},
 					},
 
-					// 2. Cabecera: Nombre del sitio (Se pinta encima del fondo)
 					{
 						type: 'div',
 						props: {
@@ -128,7 +127,7 @@ export default async post => {
 											color: '#cbd5e1',
 										},
 										children: [
-											'Escrito por ',
+											'Written by ',
 											{
 												type: 'span',
 												props: {
@@ -154,7 +153,7 @@ export default async post => {
 			height: 630,
 			embedFont: true,
 			fonts: await loadGoogleFonts(
-				post.data.title + post.data.author + SITE.title + 'Escritopor' + '.com',
+				post.data.title + post.data.author + SITE.title + 'Writtenby' + '.com',
 			),
 		},
 	);
