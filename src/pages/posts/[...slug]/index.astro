@@ -17,10 +17,15 @@ export async function getStaticPaths() {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
-	const postResult = posts.map(post => ({
-		params: { slug: getPath(post.id, post.filePath, false) },
-		props: { post },
-	}));
+	const postResult = posts.map(post => {
+		// console.log(post.id, post.filePath);
+		// console.log(getPath(post.id, post.filePath, false));
+
+		return {
+			params: { slug: getPath(post.id, post.filePath, false) },
+			props: { post },
+		};
+	});
 
 	return postResult;
 }

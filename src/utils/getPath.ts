@@ -2,35 +2,34 @@ import { BLOG_PATH } from '@/content.config';
 import { slugifyStr } from './slugify';
 
 /**
- * Get full path of a blog post
- * @param id - id of the blog post (aka slug)
+ * Get full path of a blog post, derived from its file path on disk.
+ * For `index.{md,mdx}` files the directory itself is the post, so the
+ * `index` filename is stripped and only the directory segments are used.
+ *
+ * @param _id - unused, kept for backwards-compatible call sites
  * @param filePath - the blog post full file location
- * @param includeBase - whether to include `/posts` in return value
- * @returns blog post path
+ * @param includeBase - whether to include `/posts` in the return value
+ * @returns blog post path, e.g. "/posts/hello-world"
  */
 export function getPath(
-	id: string,
+	_id: string,
 	filePath: string | undefined,
 	includeBase = true,
 ) {
-	const pathSegments = filePath
-		?.replace(BLOG_PATH, '')
-		.split('/')
-		.filter(path => path !== '') // remove empty string in the segments ["", "other-path"] <- empty string will be removed
-		.filter(path => !path.startsWith('_')) // exclude directories start with underscore "_"
-		.slice(0, -1) // remove the last segment_ file name_ since it's unnecessary
-		.map(segment => slugifyStr(segment)); // slugify each segment path
-
 	const basePath = includeBase ? '/posts' : '';
 
-	// Making sure `id` does not contain the directory
-	const blogId = id.split('/');
-	const slug = blogId.length > 0 ? blogId.slice(-1) : blogId;
+	const pathSegments = filePath
+		?.replace(BLOG_PATH, '')
+		.replace(/\/index\.(md|mdx)$/, '') // strip /index.mdx for index files
+		.replace(/\.(md|mdx)$/, '') // strip .md/.mdx extension
+		.split('/')
+		.filter(p => p !== '')
+		.filter(p => !p.startsWith('_'))
+		.map(segment => slugifyStr(segment));
 
-	// If not inside the sub-dir, simply return the file path
 	if (!pathSegments || pathSegments.length < 1) {
-		return [basePath, slug].join('/');
+		return basePath || '/';
 	}
 
-	return [basePath, ...pathSegments, slug].join('/');
+	return [basePath, ...pathSegments].join('/');
 }
