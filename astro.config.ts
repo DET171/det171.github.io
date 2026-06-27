@@ -24,9 +24,6 @@ export default defineConfig({
 			filter: page => SITE.showArchives || !page.endsWith('/archives'),
 		}),
 	],
-	experimental: {
-		rustCompiler: true,
-	},
 	markdown: {
 		// remarkPlugins: [remarkToc, [remarkCollapse, { test: 'Table of contents' }]],
 		processor: unified({
